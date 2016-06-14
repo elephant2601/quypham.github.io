@@ -1,0 +1,63 @@
+﻿.main{
+	font-family: Georgia, "Times New Roman", Times, serif;
+	width: 500px;
+	height: 733px;
+	border-style: ridge;
+	border-width: 1px;
+	border-color: #0033FF;	
+}
+.id_player_pro{
+	height: 25px;
+	font-weight: bold;
+	background-image: url(title_bg.gif);
+	background-repeat: repeat-x;
+}
+.avatar{
+	height: 100px;
+}
+#img_avatar{
+	width: 100px; 
+	height: 90px;
+}
+#info_avatar{
+	width: 400px;
+	height: 100px;
+	overflow: scroll;
+	float: right;
+	margin-top: 0px;
+}
+.fact{
+	font-weight: bold;
+	margin-top: 0px;
+}
+.fact_info{
+	list-style-type:none;
+	width: 430px;
+	float: right;
+	margin-bottom: 50px;
+	margin-top: 0px;
+}
+.comment{
+	background-color: #ECECEC;
+	clear: right;
+}
+.comment_bg{
+	margin-left: 30px;
+}
+.your_comment{
+	margin-top: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+ul{
+	padding-left: 0px;
+	list-style-image: url('star.gif');
+}
+.name_email{
+	float: left;
+	width: 130px;
+}
+.box{
+	float: right;
+	width: 370px;
+}
