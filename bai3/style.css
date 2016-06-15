@@ -3,13 +3,18 @@
 	font-family: Arial;
 	font-size: 0.6875em;
 	color: #595959;
+	width: 663px;
 }
 .group_big_left{
 	width: 400px;
+	float: left;
+}
+#pDeThi{
+	margin-bottom: 40px;
 }
 .img_group_class{
 	width: 154px;
-	height: 113px;
+	height: 109px;
 	float: left;
 }
 #img_group{
@@ -17,8 +22,7 @@
 	height: 84px;
 }
 #font_group{
-	width: 400px;
-	align-self: left;
+	width: 389px;
 	margin-bottom: 0px;
 }
 h5{
@@ -26,7 +30,7 @@ h5{
 	margin-top: 0px;
 	font-family: Arial;
 }
-hr{
+.cross{
 	border-style: dotted;
 }
 a:link{
@@ -34,12 +38,14 @@ a:link{
 	color: white;
 }
 a:visited{
-
 	color: white;
 }
 a:hover{
 	color: yellow;
 	text-decoration: underline;
+}
+.group_small_down{
+	margin-left:6px;
 }
 .more_info{
 	margin-bottom: 80px;
@@ -50,16 +56,51 @@ a:hover{
 #p_1{
 	margin-top: 0px;
 }
+.list{
+	height: 107px;
+}
 ul{
 	padding-left: 0px;
 	list-style-image: url('arr.gif');
 }
 li{
 	width: 185px;
+	text-decoration: underline;
+	margin-bottom: 10px;
 }
 #list_1{
 	float: left;
+	margin-left:11px;
 }
 #list_2{
 	float: right;
+}
+.group_big_right{
+	background-color: #232326;
+	width: 233px;
+	height: 361px;
+	float: right;
+	margin-top: 10px;
+}
+#hr_2{
+	border-color:#595959;
+	margin-top: 50px;
+	margin-bottom: 25px;
+}
+#imgE{
+	margin-top: 60px;
+	margin-left: 30px;
+	margin-bottom: 14px;
+	border-top-style: ridge;
+	border-top: 1px solid #595959;
+	padding-top:21px;
+}
+#text_right{
+	margin-left: 30px;
+}
+#pAnh{
+	margin-bottom: 30px;
+}
+span{
+	color: white;
 }
