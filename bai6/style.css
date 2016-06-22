@@ -1,0 +1,62 @@
+﻿body{
+	background-color: black;
+	font-family: Arial;
+}
+.news{
+	width:700px;
+}
+.top{
+	background-color: white;
+}
+.top_left{
+	width:323px;
+	border-style: dotted;
+	border-width: 0px 1px 0px 0px;
+	float: left;
+	
+}
+.header_1{
+	width: 323px;
+	height: 26px;
+	background-image:url("header1.gif");
+	background-repeat-x: repeat;
+	border-right: 1px solid #000000;
+}
+#daily_celebrity{
+	color: white;
+	position: relative;
+	top: -22px;
+	left: 7px;
+}
+#img_1{
+	margin-left: 7px;
+	margin-top: -11px;
+}
+#showbuzz{
+	margin-left: 7px;
+}
+#more{
+	font-weight: bold;
+	position: relative;
+	left: 232px;
+	bottom: 29px;
+}
+#russell_crowe{
+	font-weight: bold;
+}
+#below_showbuzz{
+	margin-left: 7px;
+	margin-top: -15px;
+	font-size: 11px;
+}
+.top_right{
+	float: right;
+}
+#below_shooting stars{
+	margin-left: 7px;
+	margin-top: -15px;
+	font-size: 11px;
+}
+#beckham{
+	font-weight: bold;
+}
