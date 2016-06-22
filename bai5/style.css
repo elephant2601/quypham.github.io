@@ -1,0 +1,139 @@
+﻿.body_main{
+	font-family: Arial, Helvetica, Sans-serif;
+	font-size: 11px;
+	width: 300px;
+	height: 662px;
+	background-color: #e6f3fb;
+}
+.main{
+	margin-left: 10px;
+}
+.blogroll{
+}
+.header{
+	font-size: 12px;
+	font-weight: bold;
+}
+.pic_info{
+	border-top: 2px solid #ffa500;
+	background-color: #ffffff;
+	width: 281px;
+	padding-top: 5px;
+	padding-left: 5px;
+}
+#pic1{
+	border: 1px solid #cccccc;
+	padding: 1px 1px 1px 1px;
+}
+#the_nerve{
+	width: 108px;
+	float: right;
+	padding-top: 5px;
+}
+#the_nerve_header{
+	font-weight: bold;
+	color: #0a6395;
+	text-decoration: none;
+}
+#top_gear_australia{
+	font-style: italic;
+}
+.list_below_pic1{
+}
+ul{
+	color: #0a6395;
+	list-style-type: none;
+	width: 286px;
+	padding-left: 0px;
+	margin-top: 0px;
+}
+li{
+	background-color: #faf0bf;
+	margin-bottom: 2px;
+	height: 22px;
+	padding-left: 5px;
+	padding-top: 9px;
+}
+.splat_ask_blogo{
+	font-weight: bold;
+}
+.horoscopes{
+}
+#pic2{
+	width: 103px;
+	height: 133px;
+}
+#libra{
+	width: 178px;
+	float: right;
+	margin-top: 19px;
+}
+#libra_header{
+	font-weight: bold;
+}
+#time{
+	color: #808080;
+}
+#end_libra{
+	color: #0a6395;
+}
+.below_libra{
+	background-color: #f4f4ec;
+	position: relative;
+}
+#powered_by_jonathan{
+	padding-top: 11px;
+	padding-bottom: 11px;
+	padding-left: 20px;
+	margin-bottom: 17px;
+}
+#read_all{
+	font-weight: bold;
+	color: #0a6395;
+	text-decoration: none;
+}
+#pic3{
+	height: 47px;
+	position: absolute;
+	top: 0px;
+	right: 4px;
+}
+.get_news_on_the_go{
+	position: relative;
+}
+#keep_in_touch{
+	padding-left: 20px;
+	width: 122px;
+}
+#get_news_mobile{
+	font-weight: bold;
+	color: #0a6395;
+	text-decoration: none;
+}
+#pic4{
+	width: 104px;
+	height: 104px;
+	position: absolute;
+	top: 16px;
+	right: 4px;
+}
+hr{
+	width: 99%;
+	border: 1px #cccccc;
+	border-style: solid none none none;
+	margin-right: 5px;
+}
+.competitions{
+}
+#win_1_of_4{
+	border: 1px solid #dadada;;
+	background-color: #ffffff;
+	margin-right: 4px;
+	padding-left: 4px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+.competitions_info{
+	color: #0a6395;
+	text-decoration: none;
+}
