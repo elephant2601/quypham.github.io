@@ -1,45 +1,48 @@
 ﻿body{
-	background-color: black;
-	font-family: Arial;
+
+	font-family: Arial, Helvetica, Sans-serif;
+	background-color: #292728;
+	font-size: 11px;
 }
-.news{
-	width:700px;
+#news{
+	width: 647px;
 }
-.top{
+#top{
 	background-color: white;
+	height: 295px;
 }
-.top_left{
+#top_left{
 	width:323px;
 	border-style: dotted;
 	border-width: 0px 1px 0px 0px;
+	border-color: #292728 #292728;
 	float: left;
 	
 }
 .header_1{
-	width: 323px;
-	height: 26px;
+	width: 316px;
+	height: 22px;
 	background-image:url("header1.gif");
-	background-repeat-x: repeat;
-	border-right: 1px solid #000000;
-}
-#daily_celebrity{
+	background-repeat: repeat-x;
+	border-right: 1px solid #292728;
 	color: white;
-	position: relative;
-	top: -22px;
-	left: 7px;
+	font-weight: bold;
+	padding: 4px 0px 0px 7px;
+	margin: 0px 0px 0px 0px;
 }
 #img_1{
 	margin-left: 7px;
-	margin-top: -11px;
+	margin-top: 8px;
+}
+.more{
+	background-repeat: no-repeat;
+	font-weight: bold;
+	font-size: 13px;
+	padding: 0px 0px 0px 243px;
+	margin: 0px 0px 23px 5px;
 }
 #showbuzz{
-	margin-left: 7px;
-}
-#more{
-	font-weight: bold;
-	position: relative;
-	left: 232px;
-	bottom: 29px;
+	background-image:url("showbuzz.gif");
 }
 #russell_crowe{
 	font-weight: bold;
@@ -47,16 +50,89 @@
 #below_showbuzz{
 	margin-left: 7px;
 	margin-top: -15px;
-	font-size: 11px;
 }
-.top_right{
+#top_right{
+	width:323px;
 	float: right;
 }
-#below_shooting stars{
+#img_2{
+	width: 306px;
+	height: 151px;
+	margin-left: 9px;
+	margin-top: 7px;
+}
+#shooting{
+	background-image:url("shooting_stars.gif");
+}
+#below_shooting_stars{
 	margin-left: 7px;
 	margin-top: -15px;
-	font-size: 11px;
 }
 #beckham{
 	font-weight: bold;
 }
+#confidential{
+	width: 509px;
+	padding: 19px 0px 0px 10px;
+}
+#bottom{
+}
+#bottom_left{
+	float: left;
+}
+.header_2{
+	width:316px;
+	height: 23px;
+	background-image:url("header2.gif");
+	background-repeat: repeat-x;
+	color: white;
+	font-weight: bold;
+	padding: 4px 0px 0px 7px;
+	margin: 0px 0px 0px 0px;
+}
+.thehouse_eagle_journey{
+	height: 18px;
+	color: #1d78c9;
+	background-image:url("pa.jpg");
+	background-repeat: repeat-x;
+	position: relative;
+	padding: 5px 0px 0px 5px;
+}
+.arrow{
+	width: 8px;
+	height: 8px;
+	background-image:url("arrows.gif");
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	position: absolute;
+	right: 10px;
+	top: 7px;
+}
+.thehouse_info{
+	width: 316px;
+	height: 100px;
+	background-color: white;
+	padding: 7px 0px 0px 7px;
+}
+.img-3{
+	float: left;
+}
+.thehouse_info_right{
+	width: 206px;
+	float: right;
+	margin: 1px 0px 0px 10px;
+}
+.when_playboy{
+	width: 172px;
+	margin: 0px 0px 8px 0px;
+}
+.film{
+}
+.watch_now{
+	text-decoration: none;
+	color: #1d78c9;
+}
+#bottom_right{
+	float: right;
+}
+
