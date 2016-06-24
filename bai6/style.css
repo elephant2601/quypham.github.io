@@ -1,6 +1,8 @@
 ﻿body{
 
 	font-family: Arial, Helvetica, Sans-serif;
+	width: 1000px;
+	height: 816px;
 	background-color: #292728;
 	font-size: 11px;
 }
@@ -16,8 +18,7 @@
 	border-style: dotted;
 	border-width: 0px 1px 0px 0px;
 	border-color: #292728 #292728;
-	float: left;
-	
+	float: left;	
 }
 .header_1{
 	width: 316px;
@@ -73,22 +74,24 @@
 }
 #confidential{
 	width: 509px;
-	padding: 19px 0px 0px 10px;
+	padding: 18px 0px 0px 10px;
 }
 #bottom{
+	width: 647px;
 }
 #bottom_left{
+	width: 315px;
 	float: left;
+	margin-bottom: 20px;
 }
 .header_2{
-	width:316px;
 	height: 23px;
 	background-image:url("header2.gif");
 	background-repeat: repeat-x;
 	color: white;
 	font-weight: bold;
 	padding: 4px 0px 0px 7px;
-	margin: 0px 0px 0px 0px;
+	margin: 8px 0px 0px 0px;
 }
 .thehouse_eagle_journey{
 	height: 18px;
@@ -97,28 +100,33 @@
 	background-repeat: repeat-x;
 	position: relative;
 	padding: 5px 0px 0px 5px;
+	font-weight: bold;
 }
 .arrow{
 	width: 8px;
-	height: 8px;
+	height: 13px;
 	background-image:url("arrows.gif");
 	background-repeat: no-repeat;
-	background-position: 0px 0px;
+	background-position: 2px -19px;
 	position: absolute;
 	right: 10px;
-	top: 7px;
+	top: 5px;
+}
+
+button{
+	border-width: 0;
 }
 .thehouse_info{
-	width: 316px;
-	height: 100px;
+	height: 88px;
 	background-color: white;
 	padding: 7px 0px 0px 7px;
+	display: none;
 }
 .img-3{
 	float: left;
 }
 .thehouse_info_right{
-	width: 206px;
+	width: 198px;
 	float: right;
 	margin: 1px 0px 0px 10px;
 }
@@ -126,13 +134,118 @@
 	width: 172px;
 	margin: 0px 0px 8px 0px;
 }
-.film{
-}
-.watch_now{
+a{
 	text-decoration: none;
-	color: #1d78c9;
+	color: #1d78c9;	
+}
+.watch_now, .view_link{
+	font-weight: bold;
+}
+#end_top_3_movie{
+	height: 23px;
+	background-color: white;
+}
+#now_showing_icon{
+	width: 17px;
+	margin: 0px 0px 0px 0px;
+}
+#now_showing{
+	width: 74px;
+	font-weight: bold;
+	margin: -21px 0px -14px 22px;
+}
+select{
+	width: 212px;
+	margin: 0px 0px 0px 99px;
 }
 #bottom_right{
+	width: 315px;
+	height: 302px;
 	float: right;
+	margin-bottom: 20px;
 }
-
+.movie_reviews{
+	background-color: white;
+}
+#eagle_eye, #house_bunny{
+	border-style: dotted;
+	border-width: 0px 0px 1px 0px;	
+}
+h3{
+	color: #1d78c9;
+	margin: 0px 0px 0px 0px;
+	padding: 6px 0px 0px 7px;
+}
+.topic_star_ratings{
+	width: 61px;
+	height: 14px;
+	background-image:url("topic-star-ratings.gif");
+	background-repeat: no-repeat;
+	margin: -15px 0px 22px 243px;
+	padding: 0px 0px 0px 0px;
+}
+#star25{
+	background-position: 2px -68px;
+}
+#star2{
+	background-position: 2px -52px;
+}
+.img-45{
+	margin: -15px 0px 0px 7px;
+}
+.eagle_eye_info{
+	width: 176px;
+	margin: -70px 0px 0px 119px;
+}
+.film{
+	margin: 24px 0px 0px 5px;
+}
+.view_trailer{
+	margin: -16px 0px 12px 29px;
+}
+#house_bunny{
+}
+#clock{
+	margin: 0px 0px 0px 5px;
+}
+#more{
+	margin: -20px 0px 0px 218px;
+}
+#search{
+	position: absolute;
+	left: 700px;
+	top: 21px;
+}
+form{
+	margin-top: 7px;
+}
+#click_search{
+	background-image:url("search_bg.png");
+	background-repeat: repeat-x;
+	color: white;
+	font-weight: bold;
+	margin: 0px 0px 0px 0px;
+	position: absolute;
+	left: 176px;
+	top: 44px;
+	border: none;
+}
+#footer{
+	border-width: 1px 0px 0px 0px;
+	border-style: dotted;
+	clear: both;
+	color: white;
+	height: 64px;
+}
+.image_margin{
+	float: left;
+	margin: 0px 77px 0px 31px;
+	text-align: center;
+}
+#info_contact{
+	text-align: center;
+	background-color: white;
+}
+#back_to_top{
+	margin: -24px 0px 0px 923px;
+}
