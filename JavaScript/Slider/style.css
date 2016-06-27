@@ -1,0 +1,24 @@
+﻿#main {
+
+}
+#container {
+	width: 851px;
+	position: relative;
+}
+.image {
+	width: 851px;
+	height: 315px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+#prev {
+	position: absolute;
+	top: 350px;
+	left: 200px;
+}
+#next {
+	position: absolute;
+	top: 350px;
+	left: 100px;
+}

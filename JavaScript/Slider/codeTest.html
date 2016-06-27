@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html>
+<style>
+#container {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  background: yellow;
+overflow: hidden;
+}
+#animate {
+  width: 400px;
+  height: 50px;
+  position: absolute;
+  background-color: red;
+
+}
+#animate2 {
+  width: 400px;
+  height: 50px;
+  position: absolute;
+  background-color: blue;
+left:750px;
+
+}
+</style>
+<body>
+
+<p>
+<button onclick="myMove()">Click Me</button>
+</p>
+
+<div id ="container">
+<div id ="animate"></div>
+<div id ="animate2"></div>
+</div>
+
+<script>
+function myMove() {
+  var elem = document.getElementById("animate");
+  var pos = 350;
+  var id = setInterval(frame, 1);
+  function frame() {
+    if (pos == -400) {
+      clearInterval(id);
+    } else {
+      pos-=1;
+  //    elem.style.top = pos - 'px';
+      elem.style.left = pos + 'px';
+    }
+  }
+  var elem2 = document.getElementById("animate2");
+  var pos2 = 350;
+  var id = setInterval(frame, 1);
+  function frame() {
+    if (pos == 0) {
+      clearInterval(id);
+    } else {
+      pos2-=1;
+  //    elem.style.top = pos - 'px';
+      elem2.style.left = pos2 + 'px';
+    }
+  }
+}
+</script>
+
+</body>
+</html>
+
+----------------------------------------------------------------------------
+<!DOCTYPE html>
+<html>
+<style>
+#container {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  background: yellow;
+overflow: hidden;
+}
+#animate {
+  width: 400px;
+  height: 50px;
+  position: absolute;
+  background-color: red;
+}
+#animate2 {
+  width: 400px;
+  height: 50px;
+  position: absolute;
+left: -400px;
+  background-color: blue;
+}
+</style>
+<body>
+
+<p>
+<button onclick="myMove()">Click Me</button>
+</p>
+
+<div id ="container">
+<div id ="animate"></div>
+<div id ="animate2"></div>
+</div>
+
+<script>
+function myMove() {
+  var elem = document.getElementById("animate");
+  var pos = 0;
+  var id = setInterval(frame, 5);
+  function frame() {
+    if (pos == 450) {
+      clearInterval(id);
+    } else {
+      pos++;
+    //  elem.style.top = pos + 'px';
+      elem.style.left = pos + 'px';
+    }
+  }
+  var elem2 = document.getElementById("animate2");
+  var pos2 = -400;
+  var id = setInterval(frame2, 5);
+  function frame2() {
+    if (pos2 == 0) {
+      clearInterval(id);
+    } else {
+      pos2++;
+    //  elem.style.top = pos + 'px';
+      elem2.style.left = pos2 + 'px';
+    }
+  }
+}
+</script>
+
+</body>
+</html>
+
+
