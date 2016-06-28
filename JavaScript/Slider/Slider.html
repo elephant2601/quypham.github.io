@@ -1,24 +1,10 @@
-﻿<!--
-slider gom 5 anh
-co cac nut:
-- mot nut previous, de xem anh truoc
-- mot nut next, de xem anh ke tiep
-- cac nut index, the hien dc vi tri cua anh trong slider, co the click vao de hien thi anh nhanh
---------------------------------------------------------------
-y tuong:
-- tat ca anh cung 1 div class
-- moi anh 1 div id
-- 2 nut onclick previous + next
-- 1 bien luu id anh dang hien thi
-- nhan nut previous thi anh dang hien thi pos--, anh ben phai pos--
-- nhan nut next thi anh dang hien thi pos++, anh ben trai pos++
--->
+﻿
 <!DOCTYPE html>
 
 <html>
 	<head>
 		<title>Exercise SLider</title>
-		<script> type = "text/javascript" src = "slider.js"</script>
+		<script language = "javascript" src = "slider.js"></script>
 		<link rel = "stylesheet" type = "text/css" href = "style.css"/>
 	</head>
 	<body>
@@ -30,8 +16,15 @@ y tuong:
 				<img class = "image" id = "img-4" src = "img-4.jpg" alt = "">
 				<img class = "image" id = "img-5" src = "img-5.jpg" alt = "">					
 			</div>
-			<button id = "prev" onclick = "previous()">previous</button>
-			<button id = "next" onclick = "next()">next</button>
+			<button id = "prev" onclick = "prev_next(-1)"></button>
+			<button id = "next" onclick = "prev_next(1)"></button>
+			<div class = "select">
+				<button onclick = "numberClick(1)">1</button>
+				<button onclick = "numberClick(2)">2</button>
+				<button onclick = "numberClick(3)">3</button>
+				<button onclick = "numberClick(4)">4</button>
+				<button onclick = "numberClick(5)">5</button>
+			</div>
 		</div>
 	</body>
 </html>

@@ -1,9 +1,11 @@
-﻿#main {
-
+﻿body {
+	background-color: black;
 }
 #container {
 	width: 851px;
+	height: 315px;
 	position: relative;
+	overflow: hidden;
 }
 .image {
 	width: 851px;
@@ -13,12 +15,24 @@
 	left: 0px;
 }
 #prev {
+	width: 34px;
+	height: 49px;
+	background-image:url("a12.png");
+	background-repeat: no-repeat;
+	background-position: -16px -38px;
+	background-color: transparent;
 	position: absolute;
-	top: 350px;
-	left: 200px;
+	top: 126px;
+	left: 8px;
 }
 #next {
+	width: 34px;
+	height: 49px;
+	background-image:url("a12.png");
+	background-repeat: no-repeat;
+	background-position: -77px -38px;
+	background-color: transparent;
 	position: absolute;
-	top: 350px;
-	left: 100px;
+	top: 126px;
+	left: 824px;
 }
