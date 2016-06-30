@@ -4,24 +4,7 @@
 	<head>
 		<title>bai tap so 6</title>
 		<link rel = "stylesheet" type = "text/css" href = "style.css"/>
-		<script language ="JavaScript" src ="https://code.jquery.com/jquery-3.0.0.min.js"></script>
-		<script>
-			$(document).ready(function(){
-				$("#arrow1").click(function(){
-					$("#thehouse1").toggle();
-				});				
-			});
-			$(document).ready(function(){
-				$("#arrow2").click(function(){
-					$("#thehouse2").toggle();
-				});				
-			});
-			$(document).ready(function(){
-				$("#arrow3").click(function(){
-					$("#thehouse3").toggle();
-				});				
-			});
-		</script>
+		<script language = "javascript" src = "bai6Js.js"></script>
 	</head>
 	<body>
 		<div id = "news">
@@ -65,8 +48,8 @@
 					</div>
 					<div class = "thehouse_eagle_journey">
 						The House Bunny (M)
-						<button class = "arrow" id = "arrow1">							
-						</button>
+						<div class = "arrow" id = "arrow1" onclick = "showHideinfo(1)">							
+						</div>
 					</div>
 					<div class = "thehouse_info" id = "thehouse1">
 						<img class = "img-3" src = "img-3.jpg" alt="">
@@ -81,8 +64,8 @@
 					</div>
 					<div class = "thehouse_eagle_journey">
 						Eagle Eye (M)
-						<button class = "arrow" id = "arrow2">							
-						</button>
+						<div class = "arrow" id = "arrow2" onclick = "showHideinfo(2)">							
+						</div>
 					</div>
 					<div class = "thehouse_info" id = "thehouse2">
 						<img class = "img-3" src = "img-3.jpg" alt="">
@@ -97,8 +80,8 @@
 					</div>
 					<div class = "thehouse_eagle_journey">
 						Journey To The Center Of The Earth (PG)
-						<button class = "arrow" id = "arrow3">							
-						</button>
+						<div class = "arrow" id = "arrow3" onclick = "showHideinfo(3)">							
+						</div>
 					</div>
 					<div class = "thehouse_info" id = "thehouse3">
 						<img class = "img-3" src = "img-3.jpg" alt="">
