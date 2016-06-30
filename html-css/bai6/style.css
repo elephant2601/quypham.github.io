@@ -102,7 +102,17 @@
 	padding: 5px 0px 0px 5px;
 	font-weight: bold;
 }
-.arrow {
+#arrow1 {
+	width: 8px;
+	height: 13px;
+	background-image:url("arrows.gif");
+	background-repeat: no-repeat;
+	background-position: 0px 6px;
+	position: absolute;
+	right: 10px;
+	top: 5px;
+}
+#arrow2, #arrow3 {
 	width: 8px;
 	height: 13px;
 	background-image:url("arrows.gif");
@@ -111,10 +121,6 @@
 	position: absolute;
 	right: 10px;
 	top: 5px;
-}
-
-button {
-	border-width: 0;
 }
 .thehouse_info {
 	height: 88px;
@@ -125,7 +131,7 @@ button {
 	display: block;
 }
 #thehouse2, #thehouse3 {
-	display: none;
+	display: none; 
 }
 .img-3{
 	float: left;
@@ -139,7 +145,7 @@ button {
 	width: 172px;
 	margin: 0px 0px 8px 0px;
 }
-a{
+a {
 	text-decoration: none;
 	color: #1d78c9;	
 }
