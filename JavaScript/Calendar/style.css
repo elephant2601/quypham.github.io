@@ -3,3 +3,10 @@
 	width: 45px;
 	height: 25px;
 }
+#selectMonth {
+	width: 96px;
+}
+.click {
+	background-color: #a9cce3;
+	color: #2e86c1;
+}
