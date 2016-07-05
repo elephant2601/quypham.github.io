@@ -1,12 +1,9 @@
-﻿td, th {
-	border: 1px solid black;
-	width: 45px;
-	height: 25px;
+﻿
+table {
+	display: none;
+	text-align: center;
 }
-#selectMonth {
-	width: 96px;
-}
-.click {
-	background-color: #a9cce3;
-	color: #2e86c1;
+th {
+ 	width: 61px; height: 29px;
+	box-sizing: border-box;
 }
