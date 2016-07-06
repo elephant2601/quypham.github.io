@@ -1,9 +1,9 @@
 ﻿
 table {
 	display: none;
-	text-align: center;
+	width: 471px;
 }
-th {
- 	width: 61px; height: 29px;
-	box-sizing: border-box;
+th, td {
+ 	width: 65px; height: 33px;
+	border-size: 0px;
 }

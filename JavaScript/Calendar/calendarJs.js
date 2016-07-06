@@ -14,7 +14,6 @@ var yearInput = today.getFullYear();
 
 
 
-//document.write("<input id = 'showCalendar' style = 'height: 43px; position: relative; margin: 0px 0px 5px 0px;'><img  onclick = 'showCalendar()' src = 'calendar.png' alt = '' style = 'position: absolute; top: 11px; left: 146px;'>");
 initCalendar();
 
 function initCalendar() {
@@ -26,74 +25,46 @@ function initCalendar() {
 	// ngay cuoi thang nay la thu may?
 	dayLastMonth = new Date(yearInput, monthInput + 1, 0).getDay();
 	document.write("<div id = 'main'>");
-	document.write("<input id = 'showCalendar' style = 'height: 32px; position: relative;'><img  onclick = 'showCalendar()' src = 'calendar.png' alt = '' style = 'position: absolute; top: 11px; left: 146px;'>");
-	document.write("<table id = 'calendar' style = 'border: 1px solid black;'>");
+	document.write("<input id = 'showCalendar' style = 'height: 36px; position: relative;'><img  onclick = 'showCalendar()' src = 'calendar.png' alt = '' style = 'position: absolute; top: 10px; left: 146px;'>");
+	document.write("<table id = 'calendar' style = 'border: 1px solid black; text-align: center;'>");
 	optionMonthYear();
 	setCalendar();
 	document.write("</table>");
 	document.write("</div>");
+	document.getElementById("month").value = monthInput;
+	document.getElementById("year").value = yearInput;
 }
-
 
 function optionMonthYear() {
 	document.write("<tr>");
-	document.write("<td class = 'click' id = 'prevYear' onclick = 'prevYear()' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px; border-size: 0px;'>&#8647</td>");
-	document.write("<td class = 'click' id = 'prevMonth' onclick = 'prevMonth()' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px; border-size: 0px;'>&larr;</td>");
+	document.write("<td class = 'click' id = 'prevYear' onclick = 'prevYear()' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px;'>&#8647</td>");
+	document.write("<td class = 'click' id = 'prevMonth' onclick = 'prevMonth()' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px;'>&larr;</td>");
 	buildMonth();
 	buildYear();
-	document.write("<td class = 'click' id = 'nextMonth' onclick = 'nextMonth()' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px; border-size: 0px;'>&rarr;</td>");
-	document.write("<td class = 'click' id = 'nextYear' onclick = 'nextYear()' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px; border-size: 0px;'>&#8649;</td>");
+	document.write("<td class = 'click' id = 'nextMonth' onclick = 'nextMonth()' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px;'>&rarr;</td>");
+	document.write("<td class = 'click' id = 'nextYear' onclick = 'nextYear()' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px;'>&#8649;</td>");
 	document.write("</tr>");
 }
 
 //creat optional month
 function buildMonth() {
-	document.write("<td class = 'click' id = 'selectMonth' colspan = '2' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px; border-size: 0px;'>");
-	document.write("<select>");
+	document.write("<td class = 'click' colspan = '2' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px;'><select id = 'month' onchange='changeMonth();'>");
 	for (i = 0; i < 12; i++) {
-		document.write("<option>");
-		document.write(month[i]);
-		document.write("</option>");
-	}
+		document.write("<option value ='" + i + "'>" + month[i] + "</option>");
+	};
 	document.write("</select>");
 	document.write("</td>");
 }
 
 //creat optional year
 function buildYear() {
-	document.write("<td class = 'click' id = 'selectYear' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px; border-size: 0px;'>");
-	document.write("<select>");
-	for (i = 1970; i < 2100; i++) {
-		document.write("<option>");
-		document.write(i);
-		document.write("</option>");
-	}
+	document.write("<td class = 'click' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px;'><select id = 'year' onchange='changeYear()'>");
+	for (i = 1970; i <= 2100; i++) {
+		document.write("<option value ='" + i + "'>" + i + "</option>");
+	};
 	document.write("</select>");
 	document.write("</td>");
 }
-
-
-function prevYear() {
-	clearCalendar();
-	yearInput--;
-	initCalendar();
-}
-function prevMonth() {
-	clearCalendar();
-	monthInput--;
-	initCalendar();
-}
-function nextMonth() {
-	clearCalendar();
-	monthInput++;
-	initCalendar();
-}
-function nextYear() {
-	clearCalendar();
-	yearInput++;
-	initCalendar();
-}
-
 
 function setCalendar() {
 	dateLen = date.length;
@@ -105,7 +76,7 @@ function setCalendar() {
 	//ke bang calendar (phan thu)
 	document.write("<tr>");
 	for (i = 0; i < dateLen; i++) {
-		document.write("<td style = 'border: 1px solid black; width: 61px; height: 33px; border-size: 0px;'>" + date[i] + "</td>");
+		document.write("<td style = 'border: 1px solid black; width: 61px; height: 33px;'>" + date[i] + "</td>");
 	}
 	document.write("</tr>");
 
@@ -116,13 +87,13 @@ function setCalendar() {
 			if (varloop < numDayNowMonth) {
 				//ke bang so ngay tuan cuoi cua thang truoc
 				if (numDayLastWeek > 0) {
-					document.write("<td style = 'border: 1px solid black; width: 61px; height: 33px; border-size: 0px;'>");
+					document.write("<td style = 'border: 1px solid black; width: 61px; height: 33px;'>");
 					document.write("</td>");
 					numDayLastWeek--;
 				}
 				//ke bang tiep so ngay cua thang nay
 				else {
-					document.write("<td style = 'border: 1px solid black; width: 61px; height: 33px; border-size: 0px;'>" + dayArr[varloop] + "</td>");
+					document.write("<td style = 'border: 1px solid black; width: 61px; height: 33px;'>" + dayArr[varloop] + "</td>");
 					varloop++;
 				}
 			}
@@ -131,10 +102,57 @@ function setCalendar() {
 	}
 }
 
+function prevYear() {
+	clearCalendar();
+	yearInput--;
+	initCalendar();
+}
+
+function prevMonth() {
+	clearCalendar();
+	monthInput--;
+	if (monthInput < 0) {
+		monthInput = 11;
+		yearInput--;
+	}
+	initCalendar();
+}
+
+function nextMonth() {
+	clearCalendar();
+	monthInput++;
+	if (monthInput > 11) {
+		monthInput = 0;
+		yearInput++;
+	}
+	initCalendar();
+}
+
+function nextYear() {
+	clearCalendar();
+	yearInput++;
+	initCalendar();
+}
+
+function changeMonth() {
+	//clearCalendar();
+	monthInput = document.getElementById("month").selectedIndex;
+	//document.getElementById("demo").innerHTML = parseInt(document.getElementById("selectMonth").value);	
+	initCalendar();
+}
+
+function changeYear() {
+	//clearCalendar();
+	yearInput = document.getElementById("year").selectedIndex;
+	//document.getElementById("demo").innerHTML = parseInt(document.getElementById("selectYear").value);
+	initCalendar();
+}
+
 function showCalendar() {
 	document.getElementById('calendar').style.display = 'block';
 }
 
 function clearCalendar() {
-	document.body.removeChild(main);
+	var item = document.getElementById("main");
+	item.parentNode.removeChild(item);
 }
