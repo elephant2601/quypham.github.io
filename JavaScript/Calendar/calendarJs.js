@@ -2,98 +2,96 @@
 
 var date = ["Sun", "Mon", "Tue", "Web", "Thu", "Fri", "Sat"];
 var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-var dateLen, numDayLastWeek, numDayNowMonth, dayLastMonth;
+var dayLastMonth;
 var dayArr = [];
-var numDayNowMonth;// so ngay thang nay
-var numDayLastWeek; //so ngay tuan cuoi cua thang truoc
-var varloop; //bien vong lap
+var numDayNowMonth;// This month's dates
+var numDayLastWeek; // Last week's number of days last month
+var varloop;
 var today = new Date();
 var monthInput = today.getMonth();
 var dayInput = today.getDate();
 var yearInput = today.getFullYear();
 
-
-
-initCalendar();
-
+//create calendar
 function initCalendar() {
 	varloop = 0;
-	// lay so ngay tuan cuoi thang truoc
+	// taking the number of days the last week of the previous month
 	numDayLastWeek = new Date(yearInput, monthInput, 1).getDay();
-	// lay so ngay thang nay
+	// taking the number of days this month
 	numDayNowMonth = new Date(yearInput, monthInput + 1, 0).getDate();
-	// ngay cuoi thang nay la thu may?
-	dayLastMonth = new Date(yearInput, monthInput + 1, 0).getDay();
 	document.write("<div id = 'main'>");
 	document.write("<input id = 'showCalendar' style = 'height: 36px; position: relative;'><img  onclick = 'showCalendar()' src = 'calendar.png' alt = '' style = 'position: absolute; top: 10px; left: 146px;'>");
-	document.write("<table id = 'calendar' style = 'border: 1px solid black; text-align: center;'>");
+	document.write("<table id = 'calendar' style = 'border: 1px solid black; text-align: center; background-color: #2D2D2D'>");
 	optionMonthYear();
 	setCalendar();
 	document.write("</table>");
 	document.write("</div>");
-	document.getElementById("month").value = monthInput;
-	document.getElementById("year").value = yearInput;
+	document.getElementById("selectMonth").value = monthInput;
+	document.getElementById("selectYear").value = yearInput;
 }
 
+//create optional month and year
 function optionMonthYear() {
 	document.write("<tr>");
-	document.write("<td class = 'click' id = 'prevYear' onclick = 'prevYear()' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px;'>&#8647</td>");
-	document.write("<td class = 'click' id = 'prevMonth' onclick = 'prevMonth()' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px;'>&larr;</td>");
+	document.write("<td class = 'click' id = 'prevYear' onclick = 'prevYear()' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px; cursor: pointer;'>&#8647</td>");
+	document.write("<td class = 'click' id = 'prevMonth' onclick = 'prevMonth()' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px; cursor: pointer;'>&larr;</td>");
 	buildMonth();
 	buildYear();
-	document.write("<td class = 'click' id = 'nextMonth' onclick = 'nextMonth()' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px;'>&rarr;</td>");
-	document.write("<td class = 'click' id = 'nextYear' onclick = 'nextYear()' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px;'>&#8649;</td>");
+	document.write("<td class = 'click' id = 'nextMonth' onclick = 'nextMonth()' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px; cursor: pointer;'>&rarr;</td>");
+	document.write("<td class = 'click' id = 'nextYear' onclick = 'nextYear()' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px; cursor: pointer;'>&#8649;</td>");
 	document.write("</tr>");
 }
 
-//creat optional month
+//create optional month
 function buildMonth() {
-	document.write("<td class = 'click' colspan = '2' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px;'><select id = 'month' onchange='changeMonth();'>");
+	document.write("<td class = 'click' colspan = '2' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px;'><select id = 'selectMonth' onchange='changeMonth();'>");
 	for (i = 0; i < 12; i++) {
 		document.write("<option value ='" + i + "'>" + month[i] + "</option>");
 	};
-	document.write("</select>");
-	document.write("</td>");
+	document.write("</select>" + "</td>");
 }
 
 //creat optional year
 function buildYear() {
-	document.write("<td class = 'click' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px;'><select id = 'year' onchange='changeYear()'>");
-	for (i = 1970; i <= 2100; i++) {
-		document.write("<option value ='" + i + "'>" + i + "</option>");
+	document.write("<td class = 'click' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px;'><select id = 'selectYear' onchange='changeYear()'>");
+	for (y = 1970; y <= 2100; y++) {
+		document.write("<option value ='" + y + "'>" + y + "</option>");
 	};
-	document.write("</select>");
-	document.write("</td>");
+	document.write("</select>" + "</td>");
 }
 
+// create row and column, fill the number day
 function setCalendar() {
-	dateLen = date.length;
-	//gan gia tri cho tung phan tu dayArr[]
+	//assign a value to each element of dayArr[]
 	for (i = 0; i < numDayNowMonth; i++) {
 		dayArr[i] = i+1;
 	}
 
-	//ke bang calendar (phan thu)
+	//drawing table calendar (day)
 	document.write("<tr>");
-	for (i = 0; i < dateLen; i++) {
-		document.write("<td style = 'border: 1px solid black; width: 61px; height: 33px;'>" + date[i] + "</td>");
+	for (i = 0; i < 7; i++) {
+		document.write("<td style = 'border: 1px solid black; width: 61px; height: 33px; background-color: #BEBEBE; color: red; font-weight: bold; font-size: 18pt;'>" + date[i] + "</td>");
 	}
 	document.write("</tr>");
 
-	//ke bang calendar (phan ngay)
+	//drawing table calendar (date)
 	for (x = 0; x < 6; x++) {
 		document.write("<tr>");
 		for (i = 0; i < 7; i++) {
 			if (varloop < numDayNowMonth) {
-				//ke bang so ngay tuan cuoi cua thang truoc
+				//drawing the number of days the last week of the previous month
 				if (numDayLastWeek > 0) {
-					document.write("<td style = 'border: 1px solid black; width: 61px; height: 33px;'>");
-					document.write("</td>");
+					document.write("<td style = 'border: 1px solid black; width: 61px; height: 33px;'>" + "</td>");
 					numDayLastWeek--;
 				}
-				//ke bang tiep so ngay cua thang nay
+				//drawing the number of days this month
 				else {
-					document.write("<td style = 'border: 1px solid black; width: 61px; height: 33px;'>" + dayArr[varloop] + "</td>");
+					if ((dayArr[varloop] == dayInput) && (monthInput == today.getMonth()) && (yearInput == today.getFullYear())) {
+						document.write("<td style = 'border: 1px solid black; width: 61px; height: 33px; color: red; font-weight: bold; background-color: white; cursor: pointer;' onclick='selectDay(" + varloop + ")'>" + dayArr[varloop] + "</td>");
+					}
+					else {
+					document.write("<td style = 'border: 1px solid black; width: 61px; height: 33px; background-color: white; cursor: pointer;' onclick='selectDay(" + varloop + ")'>" + dayArr[varloop] + "</td>");
+					}
 					varloop++;
 				}
 			}
@@ -102,12 +100,14 @@ function setCalendar() {
 	}
 }
 
+//previous year button
 function prevYear() {
 	clearCalendar();
 	yearInput--;
 	initCalendar();
 }
 
+//previous month button
 function prevMonth() {
 	clearCalendar();
 	monthInput--;
@@ -118,6 +118,7 @@ function prevMonth() {
 	initCalendar();
 }
 
+//next month button
 function nextMonth() {
 	clearCalendar();
 	monthInput++;
@@ -128,30 +129,44 @@ function nextMonth() {
 	initCalendar();
 }
 
+//next year button
 function nextYear() {
 	clearCalendar();
 	yearInput++;
 	initCalendar();
 }
 
+//change month
 function changeMonth() {
 	//clearCalendar();
-	monthInput = document.getElementById("month").selectedIndex;
-	//document.getElementById("demo").innerHTML = parseInt(document.getElementById("selectMonth").value);	
+	monthInput = document.getElementById("selectMonth").selectedIndex;
+	clearCalendar();
 	initCalendar();
 }
 
+//change year
 function changeYear() {
 	//clearCalendar();
-	yearInput = document.getElementById("year").selectedIndex;
-	//document.getElementById("demo").innerHTML = parseInt(document.getElementById("selectYear").value);
+	yearInput = document.getElementById("selectYear").selectedIndex + 1970;
+	clearCalendar();
 	initCalendar();
 }
 
+//select the day and show up input
+function selectDay(position) {
+	var day = position + 1;
+	var monthShow = monthInput + 1;
+	var dayMonthYear = day + "/" + monthShow + "/" + yearInput;
+	document.getElementById('showCalendar').value = dayMonthYear;
+	document.getElementById('calendar').style.display = 'none';
+}
+
+//show calendar when onclick
 function showCalendar() {
 	document.getElementById('calendar').style.display = 'block';
 }
 
+//clear calendar in order to create new calendar
 function clearCalendar() {
 	var item = document.getElementById("main");
 	item.parentNode.removeChild(item);
