@@ -20,7 +20,7 @@ function initCalendar() {
 	// taking the number of days this month
 	numDayNowMonth = new Date(yearInput, monthInput + 1, 0).getDate();
 	document.write("<div id = 'main'>");
-	document.write("<input id = 'showCalendar' style = 'height: 36px; position: relative;'><img  onclick = 'showCalendar()' src = 'calendar.png' alt = '' style = 'position: absolute; top: 10px; left: 146px;'>");
+	document.write("<input id = 'showCalendar' style = 'height: 36px; position: relative;'><img  onclick = 'openCalendar()' src = 'calendar.png' alt = '' style = 'position: absolute; top: 10px; left: 146px;'>");
 	document.write("<table id = 'calendar' style = 'border: 1px solid black; text-align: center; background-color: #2D2D2D'>");
 	optionMonthYear();
 	setCalendar();
@@ -86,7 +86,7 @@ function setCalendar() {
 				}
 				//drawing the number of days this month
 				else {
-					//hightlight today
+					//highlight today
 					if ((dayArr[varloop] == dayInput) && (monthInput == today.getMonth()) && (yearInput == today.getFullYear())) {
 						document.write("<td style = 'border: 1px solid black; width: 61px; height: 33px; color: red; font-weight: bold; background-color: white; cursor: pointer;' onclick='selectDay(" + varloop + ")'>" + dayArr[varloop] + "</td>");
 					}
@@ -163,7 +163,7 @@ function selectDay(position) {
 }
 
 //show calendar when onclick
-function showCalendar() {
+function openCalendar() {
 	document.getElementById('calendar').style.display = 'block';
 }
 

@@ -1,0 +1,9 @@
+﻿
+table {
+	display: none;
+	width: 471px;
+}
+th, td {
+ 	width: 65px; height: 33px;
+	border-size: 0px;
+}
