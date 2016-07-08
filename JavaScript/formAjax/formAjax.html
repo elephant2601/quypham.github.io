@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Exercise FormAjax</title>		
+		<link rel = "stylesheet" type = "text/css" href = "style.css"/>
+		<script charset="UTF-8" src="formAjaxJs.js"></script>
+	</head>
+	<body>
+		<form action="" method="post">
+			<table>				
+				<tr>
+					<td>Username:</td>
+					<td><input type="text" name="userName"/></td>
+					<td id="alertUserName"></td>
+				</tr>
+				<tr>
+					<td>Passwork:</td>
+					<td><input type="password" name="password"/></td>
+					<td id="alertPasswork"></td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><input type="text" name="email"/></td>
+					<td id="alertEmail"></td>
+				</tr>
+				<tr>
+					<td>Birthday:</td>				
+					<td><div id ="demo"></div></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="SUBMIT"><button id="refresh">REFRESH</button></td>
+				</tr>				
+			</table>
+		</form>
+
+		<script src="calendarJs.js"></script>
+	</body>
+</html>

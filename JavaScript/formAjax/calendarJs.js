@@ -22,7 +22,7 @@ function initCalendar() {
 	// taking the number of days this month
 	numDayNowMonth = new Date(yearInput, monthInput + 1, 0).getDate();
 	content = "<div id = 'main'>";
-	content +="<input id = 'showCalendar' style = 'height: 32px; position: relative;'><img  onclick = 'openCalendar()' src = 'calendar.png' alt = '' style = 'position: absolute; top: 10px; left: 146px;'>";
+	content +="<input id = 'showCalendar' style = 'height: 32px; position: relative;'><img  onclick = 'openCalendar()' src = 'calendar.png' alt = '' style = 'position: absolute; top: 89px; left: 222px;'>";
 	content += "<table id = 'calendar' style = 'border: 1px solid black; text-align: center; background-color: #2D2D2D'>";
 	optionMonthYear();
 	setCalendar();
