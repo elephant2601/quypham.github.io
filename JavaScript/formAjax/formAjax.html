@@ -4,11 +4,10 @@
 	<head>
 		<title>Exercise FormAjax</title>		
 		<link rel = "stylesheet" type = "text/css" href = "style.css"/>
-		<script src="calendarJs.js"></script>
 		<script charset="UTF-8" src="formAjaxJs.js"></script>
 	</head>
 	<body>
-		<form>
+		<form action="" method="post">
 			<table>				
 				<tr>
 					<td>Username:</td>
@@ -26,15 +25,16 @@
 					<td id="alertEmail"></td>
 				</tr>
 				<tr>
-					<td>Birthday:</td>
-					<script type = "text/javascript">initCalendar();</script>
+					<td>Birthday:</td>				
+					<td><div id ="demo"></div></td>
 				</tr>
 				<tr>
 					<td></td>
-					<td><input type="submit" value="SUBMIT"></td>
-					<td><button id="refresh">REFRESH</button></td>
+					<td><input type="submit" value="SUBMIT"><button id="refresh">REFRESH</button></td>
 				</tr>				
 			</table>
 		</form>
+
+		<script src="calendarJs.js"></script>
 	</body>
 </html>
