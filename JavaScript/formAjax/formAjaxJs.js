@@ -1,4 +1,4 @@
-﻿function submit() {
+﻿function submitAll() {
 	var username, password, email, emailArr;
 	var counter = 0;
 
@@ -31,7 +31,7 @@
 		document.getElementById("alertEmail").innerHTML = "OK";
 	}
 	else {
-		document.getElementById("alertEmail").innerHTML = "Email wrong format"
+		document.getElementById("alertEmail").innerHTML = "Email wrong format";
 	}
 	couter = 0;
 }
