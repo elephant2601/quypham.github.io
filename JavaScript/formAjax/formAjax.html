@@ -11,17 +11,17 @@
 			<table>				
 				<tr>
 					<td>Username:</td>
-					<td><input type="text" name="userName"/></td>
+					<td><input type="text" id="username"/></td>
 					<td id="alertUserName"></td>
 				</tr>
 				<tr>
 					<td>Passwork:</td>
-					<td><input type="password" name="password"/></td>
-					<td id="alertPasswork"></td>
+					<td><input type="password" id="password"/></td>
+					<td id="alertPassword"></td>
 				</tr>
 				<tr>
 					<td>Email:</td>
-					<td><input type="text" name="email"/></td>
+					<td><input type="text" id="email"/></td>
 					<td id="alertEmail"></td>
 				</tr>
 				<tr>
@@ -30,7 +30,7 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td><input type="submit" value="SUBMIT"><button id="refresh">REFRESH</button></td>
+					<td><button type="button" id="submit" onclick="submit()">SUBMIT</button><button type="button" id="refresh" onclick="refresh()">REFRESH</button></td>
 				</tr>				
 			</table>
 		</form>

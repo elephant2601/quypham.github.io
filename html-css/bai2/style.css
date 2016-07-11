@@ -1,0 +1,36 @@
+﻿#header {
+	background-color: #2D2F35;
+	border-bottom: 1px solid #474A51;
+}
+#main {
+	color: #CCCCCC;
+}
+h2 {
+	margin: 0px 0px 0px 0px;
+}
+#content1 {
+	background-image: url("bg_home_intro.gif");
+	background-repeat: repeat-x;
+	height: 327px;
+}
+#ourProduct {
+	width: 405px;
+	float: left;
+	margin: 32px 0px 0px 0px;
+}
+#homeIntroImage {
+	float: right;
+
+}
+#group4Image {
+
+}
+.content2 {
+
+}
+#content2Left {
+
+}
+#content2Right {
+
+}
