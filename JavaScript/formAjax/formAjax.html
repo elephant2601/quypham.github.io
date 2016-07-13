@@ -6,33 +6,35 @@
 		<link rel = "stylesheet" type = "text/css" href = "style.css"/>		
 	</head>
 	<body>
-		<form action="formAjaxPHP.php" method="get">
+		<form action="formAjaxPHP.php" method="get" id="myForm">
 			<table>				
 				<tr>
-					<td>Username:</td>
+					<td class="headLine">Username:</td>
 					<td><input type="text" name="username" id="username" onblur="checkUsername()"/></td>
 					<td id="alertUserName"></td>
 				</tr>
 				<tr>
-					<td>Passwork:</td>
+					<td class="headLine">Passwork:</td>
 					<td><input type="password" name="password"  id="password" onblur="checkPassword()"/></td>
 					<td id="alertPassword"></td>
 				</tr>
 				<tr>
-					<td>Email:</td>
+					<td class="headLine">Email:</td>
 					<td><input type="text" name="email"  id="email" onblur="checkEmail()"/></td>
 					<td id="alertEmail"></td>
 				</tr>
 				<tr>
-					<td>Birthday:</td>				
+					<td class="headLine">Birthday:</td>				
 					<td><div id ="demo"></div></td>
+					<td id="alertBirthday"></td>
 				</tr>
 				<tr>
 					<td></td>
-					<td><button type="button" id="submit" onclick="submitAll()">SUBMIT</button><button type="button" id="refresh" onclick="refreshAll()">REFRESH</button></td>
+					<td><button type="button" class="button" id="submit" onclick="submitAll()">SUBMIT</button><button type="button" class="button" id="refresh" onclick="refreshAll()">REFRESH</button></td>
 				</tr>				
 			</table>
 		</form>
+		<div id="test"></div>
 		<script src="calendarJs.js"></script>
 		<script charset="UTF-8" src="formAjaxJs.js"></script>
 	</body>
