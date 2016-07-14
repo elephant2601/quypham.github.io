@@ -1,0 +1,10 @@
+#main {
+	text-align: center;
+}
+#canvas {
+	background-image: url("img/bg.jpg");
+}
+canvas {
+	width: 800px;
+	height: 450px;
+}
