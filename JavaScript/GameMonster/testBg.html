@@ -12,14 +12,17 @@ canvas {
 <body onload="startGame()">
 <script>
 
-var myGamePiece1, myGamePiece2, myGamePiece3, myGamePiece4;
-var myBackground;
+var monster1, monster2;
+var myBackground, bigMonster;
+var ranWidth, ranHeight;
 
 function startGame() {
-    myGamePiece1 = new component(73, 30, "img/ufo1.png", Math.random()*727, Math.random()*420, "image");
-    myGamePiece2 = new component(73, 30, "img/ufo2.png", Math.random()*727, Math.random()*420, "image");
-    myGamePiece3 = new component(73, 30, "img/ufo3.png", Math.random()*727, Math.random()*420, "image");
-    myGamePiece4 = new component(73, 30, "img/ufo4.png", Math.random()*727, Math.random()*420, "image");
+    
+    ranWidHei();
+    monster1 = new component(70, 70, "img/monster" + (Math.floor(Math.random()*4)+1) + ".png", ranWidth, ranHeight, "image");
+    ranWidHei();
+    monster2 = new component(70, 70, "img/monster" + (Math.floor(Math.random()*4)+1) + ".png", ranWidth, ranHeight, "image");
+    bigMonster = new component(150, 156, "img/dragon.png", 325, 147, "image");
     myBackground = new component(800, 450, "img/bg.jpg", 0, 0, "image");
     myGameArea.start();
 }
@@ -43,6 +46,7 @@ var myGameArea = {
 }
 
 function component(width, height, color, x, y, type) {
+    var speedAll = 2;
     this.type = type;
     if (type == "image") {
         this.image = new Image();
@@ -50,8 +54,10 @@ function component(width, height, color, x, y, type) {
     }
     this.width = width;
     this.height = height;
-    this.speedX = 0;
-    this.speedY = 0;
+    this.speedX = 2*speedAll;
+    this.speedY = 1*speedAll;
+    this.speedXBig = (Math.round(Math.random())*2-1)*speedAll; // +1 or -1
+    this.speedYBig = (Math.round(Math.random())*2-1)*speedAll;
     this.x = x;
     this.y = y;
     this.update = function() {
@@ -61,26 +67,65 @@ function component(width, height, color, x, y, type) {
                 this.x,
                 this.y,
                 this.width, this.height);
-        } else {
+        }
+        else {
             ctx.fillStyle = color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
     }
     this.newPos = function() {
-        this.x += this.speedX;
-        this.y += this.speedY;
+        if (width == 70) {
+            if (this.x <= 232)  {
+                this.x += this.speedX;
+            }
+            if (this.y <= 115) {
+                this.y += this.speedY;
+            }
+            if (this.x >= 499) {
+                this.x -= this.speedX;
+            }
+            if (this.y >= 265) {
+                this.y -= this.speedY;
+            }
+        }
+        if (color == "img/dragon.png") {
+            this.x += this.speedXBig;
+            this.y += this.speedYBig;
+            if (this.x <= 0 || this.x >= 650) {
+                this.speedXBig = -this.speedXBig;
+            }
+            if (this.y <= 0 || this.y >= 294) {
+                this.speedYBig = -this.speedYBig;
+            }
+        }
     }
 }
 
 function updateGameArea() {
+
     myGameArea.clear();
-   // myBackground.newPos();
     myBackground.update();
-    myGamePiece1.update();
-    myGamePiece2.update();
-    myGamePiece3.update();
-    myGamePiece4.update();
+    monster1.newPos();
+    monster2.newPos();
+    bigMonster.newPos();
+    monster1.update();
+    monster2.update();
+    bigMonster.update();
 }
+
+function monster() {
+
+}
+
+function ranWidHei() {
+    ranWidth = Math.floor(Math.random()*3)*365;
+    ranHeight = Math.floor(Math.random()*3)*190;
+    if ((ranWidth == 365) && (ranHeight == 190)) {
+        ranWidth = 0;
+        ranHeight = 0;
+    }
+}
+
 
 </script>
 
