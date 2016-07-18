@@ -1,17 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<style>
-canvas {
-    border:1px solid #d3d3d3;
-    background-color: #f1f1f1;
-}
-</style>
-</head>
-<body onload="startGame()">
-<script>
-
 var monster1, monster2, bigMonster, myBackground, clicked, boom, ranWidth, ranHeight;
 var score = 0;
 
@@ -187,9 +173,7 @@ var createMonster = {
         bigMonster = new component(150, 156, "img/dragon.png", 325, 147, "image");
     }
 }
-function createBooṃ̣̣() {
-    
-}
+
 function ranWidHei() {
     ranWidth = Math.floor(Math.random()*3)*365;
     ranHeight = Math.floor(Math.random()*3)*190;
@@ -198,9 +182,3 @@ function ranWidHei() {
         ranHeight = 0;
     }
 }
-
-
-</script>
-    <div id="demo"></div>
-</body>
-</html>
