@@ -1,15 +1,19 @@
-var monster1, monster2, bigMonster, myBackground, clicked, boom, ranWidth, ranHeight;
+var monster1, monster2, bigMonster, background, clicked, boom, ranWidth, ranHeight, heart1, heart2, heart3, heart4;
 var score = 0;
+var speedAll = 0.5;
+var heart = [heart1, heart2, heart3, heart4];
 
 function startGame() {
     createMonster.one();
     createMonster.two();
     createMonster.three();
-    myBackground = new component(800, 450, "img/bg.jpg", 0, 0, "image");
-    myGameArea.start();
+    createHeart();
+    createScore = new component("30px", "Arial", "red", 600, 40, "text");
+    background = new component(800, 450, "img/bg.jpg", 0, 0, "image");
+    gameArea.start();
 }
 
-var myGameArea = {
+var gameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
         this.canvas.width = 800;
@@ -18,14 +22,18 @@ var myGameArea = {
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
         this.interval = setInterval(updateGameArea, 20);
-        window.addEventListener('mousedown', function(ev) {
-            myGameArea.x = ev.pageX;
-            myGameArea.y = ev.pageY;
+        window.addEventListener('click', function(ev) {
+            gameArea.x = ev.pageX;
+            gameArea.y = ev.pageY;
+        })
+        /*window.addEventListener('mousedown', function(ev) {
+            gameArea.x = ev.pageX;
+            gameArea.y = ev.pageY;
         })
         window.addEventListener('mouseup', function(ev) {
-            myGameArea.x = false;
-            myGameArea.y = false;
-        })
+            gameArea.x = false;
+            gameArea.y = false;
+        })*/
     },
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -36,7 +44,11 @@ var myGameArea = {
 }
 
 function component(width, height, color, x, y, type) {
-    var speedAll = 2;
+    if (score > 0) {
+        if ((score % 50) == 0) {
+            speedAll += 0.5;
+        }
+    }
     this.type = type;
     if (type == "image") {
         this.image = new Image();
@@ -46,17 +58,19 @@ function component(width, height, color, x, y, type) {
     this.height = height;
     this.speedX = 2*speedAll;
     this.speedY = 1*speedAll;
-    this.speedXBig = (Math.round(Math.random())*2-1)*3*speedAll; // +1 or -1
-    this.speedYBig = (Math.round(Math.random())*2-1)*speedAll;
+    this.speedXBig = (Math.round(Math.random())*2-1)*2*speedAll; // +1 or -1
+    this.speedYBig = (Math.round(Math.random())*2-1)*2*speedAll;
     this.x = x;
     this.y = y;
     this.update = function() {
-        ctx = myGameArea.context;
+        ctx = gameArea.context;
         if (type == "image") {
-            ctx.drawImage(this.image,
-                this.x,
-                this.y,
-                this.width, this.height);
+            ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+        }
+        else if (type == "text") {
+            ctx.font = this.width + " " + this.height;
+            ctx.fillStyle = color;
+            ctx.fillText(this.text, this.x, this.y);
         }
         else {
             ctx.fillStyle = color;
@@ -93,13 +107,15 @@ function component(width, height, color, x, y, type) {
                     this.speedY = -this.speedY;
                 }
             }
-            if (monster1.x <= -70 || monster1.x >= 800 || monster1.y <= -70 || monster1.y >= 520) {
+            if (monster1.x <= -70 || monster1.x >= 800 || monster1.y <= -70 || monster1.y >= 450) {
                 createMonster.one();
                 score -= 5;
+                heart.splice(heart.length - 1, 1);
             }
-            if (monster2.x <= -70 || monster2.x >= 800 || monster2.y <= -70 || monster2.y >= 520) {
+            if (monster2.x <= -70 || monster2.x >= 800 || monster2.y <= -70 || monster2.y >= 450) {
                 createMonster.two();
                 score -= 5;
+                heart.splice(heart.length - 1, 1);
             }
         }
         if (color == "img/dragon.png") {
@@ -118,7 +134,7 @@ function component(width, height, color, x, y, type) {
         var right = this.x + this.width;
         var top = this.y;
         var bot = this.y + this.height;
-        if (myGameArea.x < left || myGameArea.x > right || myGameArea.y < top || myGameArea.y > bot) {
+        if (gameArea.x < left || gameArea.x > right || gameArea.y < top || gameArea.y > bot) {
             clicked = false;
         }
         else {
@@ -129,9 +145,9 @@ function component(width, height, color, x, y, type) {
 }
 
 function updateGameArea() {
-    myGameArea.clear();
-    myBackground.update();
-    if (myGameArea.x && myGameArea.y) {
+    gameArea.clear();
+    background.update();
+    if (gameArea.x && gameArea.y) {
         if (monster1.clicked()) {
             boom = new component(70, 70, "img/boom-copy.png", monster1.x, monster1.y, "image");
             createMonster.one();
@@ -150,14 +166,27 @@ function updateGameArea() {
             boom.update();
             score += 10;
         }
+        /*if (!monster1.clicked() && !monster2.clicked() && !bigMonster.clicked()) {
+            score -= 5;
+        }
+        var a = !monster1.clicked() && !monster2.clicked() && !bigMonster.clicked();
+        document.getElementById("demo").innerHTML = a;*/
+        gameArea.x = gameArea.y = false;
     }
     monster1.newPos();
     monster2.newPos();
     bigMonster.newPos();
+    createScore.text = "SCORE: " + score;
     monster1.update();
     monster2.update();
     bigMonster.update();
-    document.getElementById("demo").innerHTML = score;
+    for (i = 0; i < heart.length; i++) {        
+        heart[i].update();
+    }
+    createScore.update();
+    if (heart.length == 0) {
+        gameArea.stop();
+    }
 }
 
 var createMonster = {
@@ -174,6 +203,11 @@ var createMonster = {
     }
 }
 
+function createHeart() {
+    for (var i = 0; i < heart.length; i++) {
+        heart[i] = new component(50, 45, "img/Love-Heart.png", 50 + 55 * i, 20, "image");
+    };
+}
 function ranWidHei() {
     ranWidth = Math.floor(Math.random()*3)*365;
     ranHeight = Math.floor(Math.random()*3)*190;
@@ -181,4 +215,18 @@ function ranWidHei() {
         ranWidth = 0;
         ranHeight = 0;
     }
+}
+
+function pause() {
+
+}
+
+function reloadGame() {
+    score = 0;
+    heart = [heart1, heart2, heart3, heart4];
+    startGame();
+}
+
+function rocket() {
+    startGame();
 }
