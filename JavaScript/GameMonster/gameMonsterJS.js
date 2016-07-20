@@ -1,13 +1,15 @@
-var monster1, monster2, bigMonster, background, clicked, boom, ranWidth, ranHeight, heart1, heart2, heart3, heart4;
+var monster1, monster2, bigMonster, background, clicked, boom, ranWidth, ranHeight, heart1, heart2, heart3, heart4, gameOver, pauseScr, reqAnimation;
 var score = 0;
 var speedAll = 0.5;
 var heart = [heart1, heart2, heart3, heart4];
+var pauseBtn = true;
 
 function startGame() {
     createMonster.one();
     createMonster.two();
     createMonster.three();
     createHeart();
+    createGameOver();
     createScore = new component("30px", "Arial", "red", 600, 40, "text");
     background = new component(800, 450, "img/bg.jpg", 0, 0, "image");
     gameArea.start();
@@ -34,11 +36,20 @@ var gameArea = {
             gameArea.x = false;
             gameArea.y = false;
         })*/
+        /*reqAnimation = window.requestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.msRequestAnimationFrame ||
+                window.oRequestAnimationFrame ;
+        if(reqAnimation)
+            updateGameArea();
+        else
+            alert("Your browser doesn't support requestAnimationFrame.");*/
     },
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     },
-    stop : function() {
+    stop : function() {        
         clearInterval(this.interval);
     }
 }
@@ -151,19 +162,16 @@ function updateGameArea() {
         if (monster1.clicked()) {
             boom = new component(70, 70, "img/boom-copy.png", monster1.x, monster1.y, "image");
             createMonster.one();
-            boom.update();
             score += 5;
         }
         if (monster2.clicked()) {
             boom = new component(70, 70, "img/boom-copy.png", monster2.x, monster2.y, "image");
             createMonster.two();
-            boom.update();
             score += 5;
         }
         if (bigMonster.clicked()) {
             boom = new component(150, 156, "img/boom-copy.png", bigMonster.x, bigMonster.y, "image");
             createMonster.three();
-            boom.update();
             score += 10;
         }
         /*if (!monster1.clicked() && !monster2.clicked() && !bigMonster.clicked()) {
@@ -177,16 +185,22 @@ function updateGameArea() {
     monster2.newPos();
     bigMonster.newPos();
     createScore.text = "SCORE: " + score;
-    monster1.update();
-    monster2.update();
-    bigMonster.update();
     for (i = 0; i < heart.length; i++) {        
         heart[i].update();
     }
     createScore.update();
+    if (score > 0) {
+        boom.update();
+    }
+    monster1.update();
+    monster2.update();
+    bigMonster.update();
     if (heart.length == 0) {
+        gameOver.text = "GAME OVER";
+        gameOver.update();
         gameArea.stop();
     }
+    reqAnimation(updateGameArea);
 }
 
 var createMonster = {
@@ -208,6 +222,11 @@ function createHeart() {
         heart[i] = new component(50, 45, "img/Love-Heart.png", 50 + 55 * i, 20, "image");
     };
 }
+
+function createGameOver() {
+    gameOver = new component("60px", "Arial", "red", 225, 250, "text");
+}
+
 function ranWidHei() {
     ranWidth = Math.floor(Math.random()*3)*365;
     ranHeight = Math.floor(Math.random()*3)*190;
@@ -217,16 +236,33 @@ function ranWidHei() {
     }
 }
 
-function pause() {
-
+function pauseGame() {
+    if (pauseBtn) {
+        pauseScr = new component(256, 256, "img/Pause-icon.png", 0, 0, "image");
+        pauseScr.update();
+        gameArea.stop();
+    }
+    else {
+        setInterval(updateGameArea, 20);
+    }
+    document.getElementById("demo").innerHTML = pauseBtn;
+    pauseBtn = !pauseBtn;
 }
 
 function reloadGame() {
     score = 0;
+    speedAll = 0.5;
     heart = [heart1, heart2, heart3, heart4];
     startGame();
 }
 
-function rocket() {
+function rocketGame() {
+    speedAll = 0.5;
+    /*var x = heart.length;
+    heart = [heart1, heart2, heart3, heart4];
+    heart.splice(x -1, 4 -x);*/
     startGame();
+    /*if (heart.length == 0) {
+        gameArea.stop();
+    }*/
 }
