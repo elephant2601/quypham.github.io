@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<style>
-canvas {
-    border:1px solid #d3d3d3;
-    background-color: #f1f1f1;
-}
-</style>
+    <title>test gameMonster</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+    canvas {
+        border:1px solid #d3d3d3;
+        background-color: #f1f1f1;
+        }
+    </style>
 </head>
 <body onload="startGame()">
 <script>
@@ -15,9 +16,9 @@ canvas {
 var redGamePiece, blueGamePiece, yellowGamePiece;
 
 function startGame() {
-    redGamePiece = new component(75, 75, "red", 10, 10);
-    yellowGamePiece = new component(75, 75, "yellow", 50, 60);
-    blueGamePiece = new component(75, 75, "blue", 10, 220);
+    redGamePiece = new component(75, 75, "red", 10, 10, "image");
+    yellowGamePiece = new component(75, 75, "yellow", 50, 60, "image");
+    blueGamePiece = new component(75, 75, "blue", 10, 220, "image");
     myGameArea.start();
 }
 
@@ -35,7 +36,7 @@ var myGameArea = {
     }
 }
 
-function component(width, height, color, x, y) {
+function component(width, height, color, x, y, type) {
     this.width = width;
     this.height = height;
     this.x = x;

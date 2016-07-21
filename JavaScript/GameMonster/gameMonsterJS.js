@@ -1,8 +1,8 @@
-var monster1, monster2, bigMonster, background, clicked, boom, ranWidth, ranHeight, heart1, heart2, heart3, heart4, gameOver, pauseScr, reqAnimation;
+var monster1, monster2, bigMonster, background, clicked, boom, ranWidth, ranHeight, heart1, heart2, heart3, heart4, gameOver, pauseScr;
 var score = 0;
 var speedAll = 0.5;
 var heart = [heart1, heart2, heart3, heart4];
-var pauseBtn = true;
+var pauseBtn = false;
 
 function startGame() {
     createMonster.one();
@@ -17,6 +17,7 @@ function startGame() {
 
 var gameArea = {
     canvas : document.createElement("canvas"),
+    //start drawing canvas
     start : function() {
         this.canvas.width = 800;
         this.canvas.height = 450;
@@ -28,33 +29,20 @@ var gameArea = {
             gameArea.x = ev.pageX;
             gameArea.y = ev.pageY;
         })
-        /*window.addEventListener('mousedown', function(ev) {
-            gameArea.x = ev.pageX;
-            gameArea.y = ev.pageY;
-        })
-        window.addEventListener('mouseup', function(ev) {
-            gameArea.x = false;
-            gameArea.y = false;
-        })*/
-        /*reqAnimation = window.requestAnimationFrame ||
-                window.mozRequestAnimationFrame ||
-                window.webkitRequestAnimationFrame ||
-                window.msRequestAnimationFrame ||
-                window.oRequestAnimationFrame ;
-        if(reqAnimation)
-            updateGameArea();
-        else
-            alert("Your browser doesn't support requestAnimationFrame.");*/
     },
+    //clear canvas
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     },
-    stop : function() {        
+    //stop drawing canvas
+    stop : function() {
         clearInterval(this.interval);
     }
 }
 
+//set the properties for monster
 function component(width, height, color, x, y, type) {
+    //set speed all monster
     if (score > 0) {
         if ((score % 50) == 0) {
             speedAll += 0.5;
@@ -69,15 +57,18 @@ function component(width, height, color, x, y, type) {
     this.height = height;
     this.speedX = 2*speedAll;
     this.speedY = 1*speedAll;
-    this.speedXBig = (Math.round(Math.random())*2-1)*2*speedAll; // +1 or -1
+    this.speedXBig = (Math.round(Math.random())*2-1)*2*speedAll; //(Math.round(Math.random())*2-1) = 1 or -1
     this.speedYBig = (Math.round(Math.random())*2-1)*2*speedAll;
     this.x = x;
     this.y = y;
+    //draw all
     this.update = function() {
         ctx = gameArea.context;
+        //draw image
         if (type == "image") {
             ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
         }
+        //draw text
         else if (type == "text") {
             ctx.font = this.width + " " + this.height;
             ctx.fillStyle = color;
@@ -88,6 +79,7 @@ function component(width, height, color, x, y, type) {
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
     }
+    //update new position for monster
     this.newPos = function() {
         if (width == 70) {
             if (this.x <= 232)  {
@@ -140,11 +132,13 @@ function component(width, height, color, x, y, type) {
             }
         }
     }
+    //return a value when click
     this.clicked = function() {
         var left = this.x;
         var right = this.x + this.width;
         var top = this.y;
         var bot = this.y + this.height;
+
         if (gameArea.x < left || gameArea.x > right || gameArea.y < top || gameArea.y > bot) {
             clicked = false;
         }
@@ -155,37 +149,44 @@ function component(width, height, color, x, y, type) {
     }
 }
 
+//update game
 function updateGameArea() {
+    var subScore = 0;
+
     gameArea.clear();
     background.update();
     if (gameArea.x && gameArea.y) {
+        //add when click monster
         if (monster1.clicked()) {
             boom = new component(70, 70, "img/boom-copy.png", monster1.x, monster1.y, "image");
             createMonster.one();
             score += 5;
+            subScore++;
         }
         if (monster2.clicked()) {
             boom = new component(70, 70, "img/boom-copy.png", monster2.x, monster2.y, "image");
             createMonster.two();
             score += 5;
+            subScore++;
         }
         if (bigMonster.clicked()) {
             boom = new component(150, 156, "img/boom-copy.png", bigMonster.x, bigMonster.y, "image");
             createMonster.three();
             score += 10;
+            subScore++;
         }
-        /*if (!monster1.clicked() && !monster2.clicked() && !bigMonster.clicked()) {
+        //expect when miss click
+        if (subScore == 0) {
             score -= 5;
         }
-        var a = !monster1.clicked() && !monster2.clicked() && !bigMonster.clicked();
-        document.getElementById("demo").innerHTML = a;*/
+        subScore = 0;
         gameArea.x = gameArea.y = false;
     }
     monster1.newPos();
     monster2.newPos();
     bigMonster.newPos();
     createScore.text = "SCORE: " + score;
-    for (i = 0; i < heart.length; i++) {        
+    for (i = 0; i < heart.length; i++) {
         heart[i].update();
     }
     createScore.update();
@@ -195,12 +196,12 @@ function updateGameArea() {
     monster1.update();
     monster2.update();
     bigMonster.update();
+    //GAME OVER
     if (heart.length == 0) {
         gameOver.text = "GAME OVER";
         gameOver.update();
         gameArea.stop();
     }
-    reqAnimation(updateGameArea);
 }
 
 var createMonster = {
@@ -216,7 +217,7 @@ var createMonster = {
         bigMonster = new component(150, 156, "img/dragon.png", 325, 147, "image");
     }
 }
-
+//create life
 function createHeart() {
     for (var i = 0; i < heart.length; i++) {
         heart[i] = new component(50, 45, "img/Love-Heart.png", 50 + 55 * i, 20, "image");
@@ -226,7 +227,7 @@ function createHeart() {
 function createGameOver() {
     gameOver = new component("60px", "Arial", "red", 225, 250, "text");
 }
-
+//creating random position
 function ranWidHei() {
     ranWidth = Math.floor(Math.random()*3)*365;
     ranHeight = Math.floor(Math.random()*3)*190;
@@ -235,34 +236,29 @@ function ranWidHei() {
         ranHeight = 0;
     }
 }
-
+//pause button
 function pauseGame() {
+    pauseBtn = !pauseBtn;
     if (pauseBtn) {
-        pauseScr = new component(256, 256, "img/Pause-icon.png", 0, 0, "image");
+        pauseScr = new component(256, 256, "img/Pause-icon.png", 272, 97, "image");
         pauseScr.update();
         gameArea.stop();
     }
     else {
-        setInterval(updateGameArea, 20);
+        gameArea.start();
     }
-    document.getElementById("demo").innerHTML = pauseBtn;
-    pauseBtn = !pauseBtn;
 }
-
+//reload button
 function reloadGame() {
     score = 0;
     speedAll = 0.5;
     heart = [heart1, heart2, heart3, heart4];
+    gameArea.stop();
     startGame();
 }
-
+//boom button
 function rocketGame() {
     speedAll = 0.5;
-    /*var x = heart.length;
-    heart = [heart1, heart2, heart3, heart4];
-    heart.splice(x -1, 4 -x);*/
-    startGame();
-    /*if (heart.length == 0) {
-        gameArea.stop();
-    }*/
+    gameArea.stop();
+    startGame();    
 }
