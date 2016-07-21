@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+}
+</style>
+</head>
+<body onload="startGame()">
+<script>
+
+var monster1, monster2, bigMonster, myBackground, clicked, boom, ranWidth, ranHeight;
+var score = 0;
+
+function startGame() {
+    createMonster.one();
+    createMonster.two();
+    createMonster.three();
+    myBackground = new component(800, 450, "img/bg.jpg", 0, 0, "image");
+    myGameArea.start();
+}
+
+var myGameArea = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = 800;
+        this.canvas.height = 450;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        this.frameNo = 0;
+        this.interval = setInterval(updateGameArea, 20);
+        window.addEventListener('mousedown', function(ev) {
+            myGameArea.x = ev.pageX;
+            myGameArea.y = ev.pageY;
+        })
+        window.addEventListener('mouseup', function(ev) {
+            myGameArea.x = false;
+            myGameArea.y = false;
+        })
+    },
+    clear : function() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    },
+    stop : function() {
+        clearInterval(this.interval);
+    }
+}
+
+function component(width, height, color, x, y, type) {
+    var speedAll = 2;
+    this.type = type;
+    if (type == "image") {
+        this.image = new Image();
+        this.image.src = color;
+    }
+    this.width = width;
+    this.height = height;
+    this.speedX = 2*speedAll;
+    this.speedY = 1*speedAll;
+    this.speedXBig = (Math.round(Math.random())*2-1)*3*speedAll; // +1 or -1
+    this.speedYBig = (Math.round(Math.random())*2-1)*speedAll;
+    this.x = x;
+    this.y = y;
+    this.update = function() {
+        ctx = myGameArea.context;
+        if (type == "image") {
+            ctx.drawImage(this.image,
+                this.x,
+                this.y,
+                this.width, this.height);
+        }
+        else {
+            ctx.fillStyle = color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        }
+    }
+    this.newPos = function() {
+        if (width == 70) {
+            if (this.x <= 232)  {
+                this.x += this.speedX;
+                if (this.x > 232) {
+                    this.x = 232;
+                    this.speedX = -this.speedX;
+                }
+            }
+            if (this.y <= 116) {
+                this.y += this.speedY;
+                if (this.y > 116) {
+                    this.y = 116;
+                    this.speedY = -this.speedY;
+                }
+            }
+            if (this.x >= 498) {
+                this.x -= this.speedX;
+                if (this.x < 498) {
+                    this.x = 498;
+                    this.speedX = -this.speedX;
+                }
+            }
+            if (this.y >= 266) {
+                this.y -= this.speedY;
+                if (this.y < 266) {
+                    this.y = 266;
+                    this.speedY = -this.speedY;
+                }
+            }
+            if (monster1.x <= -70 || monster1.x >= 800 || monster1.y <= -70 || monster1.y >= 520) {
+                createMonster.one();
+                score -= 5;
+            }
+            if (monster2.x <= -70 || monster2.x >= 800 || monster2.y <= -70 || monster2.y >= 520) {
+                createMonster.two();
+                score -= 5;
+            }
+        }
+        if (color == "img/dragon.png") {
+            this.x += this.speedXBig;
+            this.y += this.speedYBig;
+            if (this.x <= 0 || this.x >= 650) {
+                this.speedXBig = -this.speedXBig;
+            }
+            if (this.y <= 0 || this.y >= 294) {
+                this.speedYBig = -this.speedYBig;
+            }
+        }
+    }
+    this.clicked = function() {
+        var left = this.x;
+        var right = this.x + this.width;
+        var top = this.y;
+        var bot = this.y + this.height;
+        if (myGameArea.x < left || myGameArea.x > right || myGameArea.y < top || myGameArea.y > bot) {
+            clicked = false;
+        }
+        else {
+            clicked = true;
+        }
+        return clicked;
+    }
+}
+
+function updateGameArea() {
+    myGameArea.clear();
+    myBackground.update();
+    if (myGameArea.x && myGameArea.y) {
+        if (monster1.clicked()) {
+            boom = new component(70, 70, "img/boom-copy.png", monster1.x, monster1.y, "image");
+            createMonster.one();
+            boom.update();
+            score += 5;
+        }
+        if (monster2.clicked()) {
+            boom = new component(70, 70, "img/boom-copy.png", monster2.x, monster2.y, "image");
+            createMonster.two();
+            boom.update();
+            score += 5;
+        }
+        if (bigMonster.clicked()) {
+            boom = new component(150, 156, "img/boom-copy.png", bigMonster.x, bigMonster.y, "image");
+            createMonster.three();
+            boom.update();
+            score += 10;
+        }
+    }
+    monster1.newPos();
+    monster2.newPos();
+    bigMonster.newPos();
+    monster1.update();
+    monster2.update();
+    bigMonster.update();
+    document.getElementById("demo").innerHTML = score;
+}
+
+var createMonster = {
+    one : function() {
+        ranWidHei();
+        monster1 = new component(70, 70, "img/monster" + (Math.floor(Math.random()*4)+1) + ".png", ranWidth, ranHeight, "image");
+    },
+    two : function() {
+        ranWidHei();
+        monster2 = new component(70, 70, "img/monster" + (Math.floor(Math.random()*4)+1) + ".png", ranWidth, ranHeight, "image");
+    },
+    three : function() {
+        bigMonster = new component(150, 156, "img/dragon.png", 325, 147, "image");
+    }
+}
+function createBooṃ̣̣() {
+    
+}
+function ranWidHei() {
+    ranWidth = Math.floor(Math.random()*3)*365;
+    ranHeight = Math.floor(Math.random()*3)*190;
+    if ((ranWidth == 365) && (ranHeight == 190)) {
+        ranWidth = 0;
+        ranHeight = 0;
+    }
+}
+
+
+</script>
+    <div id="demo"></div>
+</body>
+</html>
