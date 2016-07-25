@@ -1,11 +1,8 @@
-var monster1, monster2, bigMonster, background, clicked, boom, ranWidth, ranHeight, heart1, heart2, heart3, heart4, gameOver, pauseScr, req;
+var monster1, monster2, bigMonster, background, clicked, boom, ranWidth, ranHeight, heart1, heart2, heart3, heart4, gameOver, pauseScr;
 var score = 0;
 var speedAll = 0.5;
 var heart = [heart1, heart2, heart3, heart4];
 var pauseBtn = false;
-var playAndStop = true;
-var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-var cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimationFrame || window.webkitCancelAnimationFrame || window.msCancelAnimationFrame;
 
 function startGame() {
     createMonster.one();
@@ -27,7 +24,7 @@ var gameArea = {
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
-        this.req = requestAnimationFrame(updateGameArea);
+        this.interval = setInterval(updateGameArea, 20);
         window.addEventListener('click', function(ev) {
             gameArea.x = ev.pageX;
             gameArea.y = ev.pageY;
@@ -39,18 +36,17 @@ var gameArea = {
     },
     //stop drawing canvas
     stop : function() {
-        cancelAnimationFrame(this.req);
+        clearInterval(this.interval);
     }
 }
 
 //set the properties for monster
 function component(width, height, color, x, y, type) {
     //set speed all monster
-    if (score <= 0) {
-        speedAll = 0.5;
-    }
-    else {        
-        speedAll = 0.5*((score + 50) / 50);
+    if (score > 0) {
+        if ((score % 50) == 0) {
+            speedAll += 0.5;
+        }
     }
     this.type = type;
     if (type == "image") {
@@ -154,65 +150,60 @@ function component(width, height, color, x, y, type) {
 }
 
 //update game
-function updateGameArea(time) {
-    if (playAndStop) {
-        var subScore = 0;
+function updateGameArea() {
+    var subScore = 0;
 
-        gameArea.clear();
-        background.update();
-        if (gameArea.x && gameArea.y) {
-            //add when click monster
-            if (monster1.clicked()) {
-                boom = new component(70, 70, "img/boom-copy.png", monster1.x, monster1.y, "image");
-                createMonster.one();
-                score += 5;
-                subScore++;
-            }
-            if (monster2.clicked()) {
-                boom = new component(70, 70, "img/boom-copy.png", monster2.x, monster2.y, "image");
-                createMonster.two();
-                score += 5;
-                subScore++;
-            }
-            if (bigMonster.clicked()) {
-                boom = new component(150, 156, "img/boom-copy.png", bigMonster.x, bigMonster.y, "image");
-                createMonster.three();
-                score += 10;
-                subScore++;
-            }
-            //expect when miss click
-            if (subScore == 0) {
-                score -= 5;
-            }
-            subScore = 0;
-            gameArea.x = gameArea.y = false;
+    gameArea.clear();
+    background.update();
+    if (gameArea.x && gameArea.y) {
+        //add when click monster
+        if (monster1.clicked()) {
+            boom = new component(70, 70, "img/boom-copy.png", monster1.x, monster1.y, "image");
+            createMonster.one();
+            score += 5;
+            subScore++;
         }
-        monster1.newPos();
-        monster2.newPos();
-        bigMonster.newPos();
-        createScore.text = "SCORE: " + score;
-        for (i = 0; i < heart.length; i++) {
-            heart[i].update();
+        if (monster2.clicked()) {
+            boom = new component(70, 70, "img/boom-copy.png", monster2.x, monster2.y, "image");
+            createMonster.two();
+            score += 5;
+            subScore++;
         }
-        createScore.update();
-        if (score > 0) {
-            boom.update();
+        if (bigMonster.clicked()) {
+            boom = new component(150, 156, "img/boom-copy.png", bigMonster.x, bigMonster.y, "image");
+            createMonster.three();
+            score += 10;
+            subScore++;
         }
-        monster1.update();
-        monster2.update();
-        bigMonster.update();
-        //appear GAME OVER
-        if (heart.length == 0) {
-            gameOver.text = "GAME OVER";
-            gameOver.update();
-            gameArea.stop();
-            return;
+        //expect when miss click
+        if (subScore == 0) {
+            score -= 5;
         }
+        subScore = 0;
+        gameArea.x = gameArea.y = false;
     }
-    gameArea.req = requestAnimationFrame(updateGameArea);
+    monster1.newPos();
+    monster2.newPos();
+    bigMonster.newPos();
+    createScore.text = "SCORE: " + score;
+    for (i = 0; i < heart.length; i++) {
+        heart[i].update();
+    }
+    createScore.update();
+    if (score > 0) {
+        boom.update();
+    }
+    monster1.update();
+    monster2.update();
+    bigMonster.update();
+    //GAME OVER
+    if (heart.length == 0) {
+        gameOver.text = "GAME OVER";
+        gameOver.update();
+        gameArea.stop();
+    }
 }
 
-//create monster1, monster2, bigMonster
 var createMonster = {
     one : function() {
         ranWidHei();
@@ -226,7 +217,6 @@ var createMonster = {
         bigMonster = new component(150, 156, "img/dragon.png", 325, 147, "image");
     }
 }
-
 //create life
 function createHeart() {
     for (var i = 0; i < heart.length; i++) {
@@ -234,11 +224,9 @@ function createHeart() {
     };
 }
 
-//create game over
 function createGameOver() {
     gameOver = new component("60px", "Arial", "red", 225, 250, "text");
 }
-
 //creating random position
 function ranWidHei() {
     ranWidth = Math.floor(Math.random()*3)*365;
@@ -248,21 +236,19 @@ function ranWidHei() {
         ranHeight = 0;
     }
 }
-
 //pause button
 function pauseGame() {
     pauseBtn = !pauseBtn;
     if (pauseBtn) {
         pauseScr = new component(256, 256, "img/Pause-icon.png", 272, 97, "image");
         pauseScr.update();
-        playAndStop = false;
+        gameArea.stop();
     }
     else {
         score += 5;
-        playAndStop = true;
+        gameArea.start();
     }
 }
-
 //reload button
 function reloadGame() {
     score = 0;
@@ -272,11 +258,10 @@ function reloadGame() {
     gameArea.stop();
     startGame();
 }
-
 //boom button
 function rocketGame() {
     speedAll = 0.5;
     score += 5;
     gameArea.stop();
-    startGame();
+    startGame();    
 }
