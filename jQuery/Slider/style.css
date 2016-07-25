@@ -1,0 +1,48 @@
+﻿body {
+	background-color: #EBEBEB;
+}
+#container {
+	width: 851px;
+	height: 315px;
+	position: relative;
+	overflow: hidden;
+}
+.image {
+	width: 851px;
+	height: 315px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+#prev {
+	width: 34px;
+	height: 49px;
+	background-image:url("a12.png");
+	background-repeat: no-repeat;
+	background-position: -16px -38px;
+	background-color: transparent;
+	position: absolute;
+	top: 126px;
+	left: 8px;
+}
+#next {
+	width: 31px;
+	height: 49px;
+	background-image:url("a12.png");
+	background-repeat: no-repeat;
+	background-position: -74px -38px;
+	background-color: transparent;
+	position: absolute;
+	top: 126px;
+	left: 828px;
+}
+#select {
+	margin: 0px 0px 0px 80px;
+}
+.iconImage {
+	width: 120px;
+	height: 50px;
+	float: left;
+	margin: 11px 8px;
+<!--	border: 1px solid #f44336; -->
+}
