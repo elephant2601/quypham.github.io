@@ -42,4 +42,5 @@ function showImage(n) {
     $(image[slideCurrent-1]).fadeIn();
     $(iconImage[slideCurrent-1]).css("border", "2px solid #f44336");
 }
+showImage();
 setInterval(autoNextImage, 5000);
