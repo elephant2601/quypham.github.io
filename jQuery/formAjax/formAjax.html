@@ -1,41 +1,43 @@
 ﻿<!DOCTYPE html>
 
 <html>
-	<head>
-		<title>Exercise FormAjax</title>		
-		<link rel = "stylesheet" type = "text/css" href = "style.css"/>		
-	</head>
-	<body>
-		<form action="formAjaxPHP.php" method="get" id="myForm">
-			<table>				
-				<tr>
-					<td class="headLine">Username:</td>
-					<td><input type="text" name="username" id="username" onblur="checkUsername()"/></td>
-					<td id="alertUserName"></td>
-				</tr>
-				<tr>
-					<td class="headLine">Passwork:</td>
-					<td><input type="password" name="password"  id="password" onblur="checkPassword()"/></td>
-					<td id="alertPassword"></td>
-				</tr>
-				<tr>
-					<td class="headLine">Email:</td>
-					<td><input type="text" name="email"  id="email" onblur="checkEmail()"/></td>
-					<td id="alertEmail"></td>
-				</tr>
-				<tr>
-					<td class="headLine">Birthday:</td>				
-					<td><div id ="demo"></div></td>
-					<td id="alertBirthday"></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><button type="button" class="button" id="submit" onclick="submitAll()">SUBMIT</button><button type="button" class="button" id="refresh" onclick="refreshAll()">REFRESH</button></td>
-				</tr>				
-			</table>
-		</form>
-		<div id="test"></div>
-		<script src="calendarJs.js"></script>
-		<script charset="UTF-8" src="formAjaxJs.js"></script>
-	</body>
+    <head>
+        <title>Exercise FormAjax</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <link rel = "stylesheet" type = "text/css" href = "style.css"/>
+    </head>
+    <body>
+        <form action="formAjaxPHP.php" method="get" id="myForm">
+            <table>
+                <tr>
+                    <td class="headLine">Username:</td>
+                    <td><input type="text" name="username" id="username" onblur="checkUsername()"/></td>
+                    <td id="alertUserName"></td>
+                </tr>
+                <tr>
+                    <td class="headLine">Passwork:</td>
+                    <td><input type="password" name="password"  id="password" onblur="checkPassword()"/></td>
+                    <td id="alertPassword"></td>
+                </tr>
+                <tr>
+                    <td class="headLine">Email:</td>
+                    <td><input type="text" name="email"  id="email" onblur="checkEmail()"/></td>
+                    <td id="alertEmail"></td>
+                </tr>
+                <tr>
+                    <td class="headLine">Birthday:</td>
+                    <td><div id ="demo"></div></td>
+                    <td id="alertBirthday"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button type="button" class="button" id="submit" onclick="submitAll()">SUBMIT</button><button type="reset" class="button" id="refresh" onclick="refreshAll()">REFRESH</button></td>
+                </tr>               
+            </table>
+        </form>
+        <div id="test"></div>
+        <script src="calendarJs.js"></script>
+        <script charset="UTF-8" src="formAjaxJs.js"></script>
+        <div id="demo1"></div>
+    </body>
 </html>
