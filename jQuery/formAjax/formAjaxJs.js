@@ -1,9 +1,4 @@
-var submit = 0;
 var alertString, idAlert;
-/*var username = $('#username').val();
-var password = $('#password').val();
-var email = $('#email').val();
-var birthday = $('#demo').val();*/
 
 //check the characters of username
 function  checkUsername() {
@@ -16,7 +11,7 @@ function  checkUsername() {
             alertString = "Username length min 8 letter";
         }
         else {
-        	alertString = "OK";
+            alertString = "Enough letter";
             //check();
         }   
     }
@@ -37,7 +32,6 @@ function checkPassword() {
         }
         else {
             alertString = "OK";
-            submit++;
         }
     }
     idAlert = "alertPassword";
@@ -64,8 +58,7 @@ function checkEmail() {
     }
     else {
         if (counter == 2) {
-            alertString = "OK";
-            submit++;
+            alertString = "Correct format";
         }
         else {
             alertString = "Email wrong format";
@@ -92,7 +85,6 @@ function checkBirthday() {
     for (i = 0; i < checkBirArr.length; i++) {
         if (checkBirArr[i] == "/") {
             alertString = "OK";
-            submit++;
             break;
         }
         else {
@@ -105,89 +97,52 @@ function checkBirthday() {
 
 //submit form
 function submitAll() {
-    /*if (submit == 4) {
-        alert("Submit successfully!");
-        submit = 0;
-    }
-    else {
-        alert("Please fill again!");
-    }*/
     $.ajax ({
-    	url : 'formAjaxPHP.php',
-    	type : 'post',
-    	dataType : 'text',
-    	data : {
-            /*username : username,
-            password : password,
-    		email : email,
-    		birthday : birthday*/
-    		username : $('#username').val(),
-			password : $('#password').val(),
-			email : $('#email').val(),
-			birthday : $('#demo').val()
-    		
-		},
-		success : function(result) {
-            if (!result.hasOwnProperty('error') || result['error'] != 'success') {
-                alert('unsuccess');
+        url : 'formAjaxPHP.php',
+        type : 'post',
+        dataType : 'text',
+        data : {
+            username : $('#username').val(),
+            password : $('#password').val(),
+            email : $('#email').val(),
+            birthday : $('#showCalendar').val()
+            
+        },
+        success : function(result) {
+            result = result.split("");
+            if (result[0] == 1) {
+                alertString = 'Username already exists';
             }
-			console.log(result.username);
-			/*if($.trim(result.username) != '') {
-			 	alertString = result.username;
-			 	idAlert = "alertUserName";
-			 	alertAll();
-			 }
-    		 if($.trim(result.email) != '') {
-    		 	alertString = result.email;
-    		 	idAlert = "alertEmail";
-    		 	alertAll();
-    		 }*/
-		}
+            else {
+                alertString = 'OK';
+            }
+            idAlert = "alertUserName";
+            alertAll();
+
+            if (result[1] == 3) {
+                alertString = 'Email already exists';
+            }
+            else {
+                alertString = 'OK';
+            }
+            idAlert = "alertEmail";
+            alertAll();
+        }
     });
 }
 
 //refresh form
 function refreshAll() {
-    document.getElementById("alertUserName").innerHTML = null;
-    document.getElementById("alertPassword").innerHTML = null;
-    document.getElementById("alertEmail").innerHTML = null;
-    document.getElementById("alertBirthday").innerHTML = null;
-    document.getElementById("myForm").reset();
-    submit = 0;
+    $('#alertUserName').html(null);
+    $('#alertPassword').html(null);
+    $('#alertEmail').html(null);
+    $('#alertBirthday').html(null);
 }
-
-//check valid username
-/*function check() {
-    var checkUser, result;
-
-    if(window.XMLHttpRequest) {
-        checkUser = new XMLHttpRequest;
-    }
-    else {
-        checkUser = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-
-    var usern = document.getElementById("username").value;
-    checkUser.open("GET", "formAjaxPHP.php?username=" + usern, true);
-    checkUser.send();
-
-    checkUser.onreadystatechange = function() {
-        if (checkUser.readyState == 4 && checkUser.status == 200) {
-            result = checkUser.responseText;
-            alertString = result;
-            idAlert = "alertUserName";
-            alertAll();
-            if (result == "OK") {
-                submit++;
-            }
-        }
-    }
-}*/
 
 //alert after entering
 function alertAll() {
     document.getElementById(idAlert).innerHTML = alertString;
-    if (alertString == "OK") {
+    if (alertString == "OK" || alertString == "Correct format" || alertString == "Enough letter") {
         document.getElementById(idAlert).style.color = "#039be5";
     }
     else {

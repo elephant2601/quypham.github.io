@@ -4,55 +4,69 @@
     $email = isset($_POST['email']) ? $_POST['email'] : false;
     $birthday = isset($_POST['birthday']) ? $_POST['birthday'] : false;
 
-
-
     //connect database
-    //$conn = mysqli_connect('sql208.freevnn.com', 'freev_18514815', 'quy2601', 'freev_18514815_formAjax') or die ('{error:"bad_request"}');
-    $conn = mysqli_connect('localhost', 'root', 'vertrigo', 'formajax') or die ('{error:"bad_request"}');
+    $conn = mysqli_connect('sql208.freevnn.com', 'freev_18514815', 'quy2601', 'freev_18514815_formAjax') or die ('{error:"bad_request"}');
 
-    // Khai báo biến lưu lỗi
+    //bien mang luu data
     $error = array(
         'error' => 'success',
-        'password' => '',
-        'username' => '',
-        'email' => '',
-        'birthday' => ''
+        'password' => $password,
+        'username' => $username,
+        'email' => $email,
+        'birthday' => $birthday
     );
 
     // check username
     if ($username) {
-        $query = mysqli_query($conn, "SELECT `USERNAME` FROM `formajax` WHERE USERNAME = $username");
-        //$query = mysqli_query($conn, 'select * from formajax where USERNAME = $username');
+        $query = mysqli_query($conn, "SELECT `USERNAME` FROM `formajax`");
         if ($query) {
-            $row = mysqli_fetch_array($query, MYSQLI_ASSOC);
-            if ( count($row) > 0){
-                $error['username'] = 'Username already exists';
+            $row = false;
+            while ($varArr = mysqli_fetch_array($query, MYSQLI_NUM)) {
+                $varArr = implode($varArr);
+                if ($username == $varArr) {
+                    $row = true;
+                }
+            }
+            if ($row) {
+                $error['username'] = '1';
             }
             else {
-                $error['username'] = 'OK';
+                $error['username'] = '2';
             }
+            echo $error['username'];
+        }
+        else {
+            echo 'Cannot select username';
         }
     }
 
     // check mail
     if ($email) {
-        //$query = mysqli_query($conn, 'select count(*) as count from formajax where EMAIL = \''.  addslashes($email).'\'');
-        $query = mysqli_query($conn, "SELECT `EMAIL` FROM `formajax` WHERE EMAIL = $email");
+        $query = mysqli_query($conn, "SELECT `EMAIL` FROM `formajax`");
         if ($query) {
-            $row = mysqli_fetch_array($query, MYSQLI_ASSOC);
-            if ( count($row) > 0) {
-                $error['email'] = 'Email already exists';
+            $row = false;
+            while ($varArr = mysqli_fetch_array($query, MYSQLI_NUM)) {
+                $varArr = implode($varArr);
+                if ($email == $varArr) {
+                    $row = true;
+                }
+            }
+            if ($row) {
+                $error['email'] = '3';
             }
             else {
-                $error['email'] = 'OK';
+                $error['email'] = '4';
             }
+            echo $error['email'];
+        }
+        else {
+            echo 'Cannot select email';
         }
     }
      
-    if (!$error['username'] && !$error['email'] && !$error['password'] && !$error['birthday']) {
+    if ($error['username'] == '2' && $error['email'] == '4' && $error['password'] && $error['birthday']) {
         // insert into database if no error
-        //$query = mysqli_query($conn, "insert into formajax(USERNAME, PASSWORD, EMAIL, BIRTHDAY) values ('$username', '$password', '$email', '$birthday')");
         $query = mysqli_query($conn, "INSERT INTO `formajax`(`USERNAME`, `PASSWORD`, `EMAIL`, `BIRTHDAY`) VALUES ('$username', '$password', '$email', '$birthday')");
     }
-    die ($error);
+    mysql_close($conn);
 ?>
