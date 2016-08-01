@@ -1,168 +1,167 @@
 ﻿body{
-	font-family: Sans-serif;
+    font-family: Sans-serif;
 }
 .header{
-	width: 1600px;
-	height: 349px;
+    width: 1600px;
+    height: 349px;
 }
 #fill_header{
-	position: relative;
+    position: relative;
 }
 #logo{
-	position: absolute;
-	top: 61px;
-	left: 53px;
+    position: absolute;
+    top: 61px;
+    left: 53px;
 }
 h1{
-	position: absolute;
-	top: 90px;
-	left: 152px;
+    position: absolute;
+    top: 90px;
+    left: 152px;
 }
 span{
-	color: grey;
+    color: grey;
 }
 #home{
-	position: absolute;
-	top: 199px;
-	left: 59px;
+    position: absolute;
+    top: 199px;
+    left: 59px;
 }
 #folder{
-	position: absolute;
-	top: 199px;
-	left: 210px;
+    position: absolute;
+    top: 199px;
+    left: 210px;
 }
 #desk{
-	position: absolute;
-	top: 199px;
-	left: 352px;
+    position: absolute;
+    top: 199px;
+    left: 352px;
 }
 #chair{
-	position: absolute;
-	top: 199px;
-	left: 488px;
+    position: absolute;
+    top: 199px;
+    left: 488px;
 }
 #top{
-	position: absolute;
-	top: 199px;
-	left: 627px;
+    position: absolute;
+    top: 199px;
+    left: 627px;
 }
 .below_menu{
-	color: white;
+    color: white;
 }
 #below_home{
-	position: absolute;
-	top: 300px;
-	left: 113px;
+    position: absolute;
+    top: 300px;
+    left: 113px;
 }
 #below_folder{
-	position: absolute;
-	top: 300px;
-	left: 253px;
+    position: absolute;
+    top: 300px;
+    left: 253px;
 }
 #below_desk{
-	position: absolute;
-	top: 300px;
-	left: 393px;
+    position: absolute;
+    top: 300px;
+    left: 393px;
 }
 #below_chair{
-	position: absolute;
-	top: 300px;
-	left: 532px;
+    position: absolute;
+    top: 300px;
+    left: 532px;
 }
 #below_top{
-	position: absolute;
-	top: 300px;
-	left: 677px;
+    position: absolute;
+    top: 300px;
+    left: 677px;
 }
 .small_body{
-	background-color: #121212;
-	color: grey;
-	width: 1600px;
-	height: 1000px;
-	margin-top:-16px;
+    background-color: #121212;
+    color: grey;
+    width: 1600px;
+    height: 1000px;
+    margin-top:-16px;
 }
 .small_left_group{
-	width: 246px;
-	height: 360px;
-	background-image:url("more.gif");
-	background-repeat-y: repeat;
-	background-repeat-x: repeat;
-	margin-left: 58px;
-	margin-bottom: 275px;
-	padding-top: 48px;
-	font-size: 13px;
+    width: 246px;
+    height: 360px;
+    background-image:url("more.gif");
+    background-repeat-y: repeat;
+    background-repeat-x: repeat;
+    margin-left: 58px;
+    margin-bottom: 275px;
+    padding-top: 48px;
+    font-size: 13px;
 }
 #top_left_info{
-	margin-left: 23px;
-	margin-bottom: 86px;
-	border-top-style: ridge;
-	border-top: 2px solid #595959;
-	padding-left: 11px;
-	padding-top: 24px;
-	width: 195px;
+    margin-left: 23px;
+    margin-bottom: 86px;
+    border-top-style: ridge;
+    border-top: 2px solid #595959;
+    padding-left: 11px;
+    padding-top: 24px;
+    width: 195px;
 }
 #hr_1{
-	width: 81%;
-	border: 1px #464343;
-	border-style: solid none none none;
+    width: 81%;
+    border: 1px #464343;
+    border-style: solid none none none;
 }
 ul{
-	list-style-image: url('arr.gif');
+    list-style-image: url('arr.gif');
 }
 li{
-	text-decoration: underline;
-	margin-bottom: 10px;
+    text-decoration: underline;
+    margin-bottom: 10px;
 }
 #bottom_left_info{
-	margin-top: 30px;
-	margin-left:10px;
+    margin-top: 30px;
+    margin-left:10px;
 }
 .small_right_group{
-	width: 394px;
-	position: absolute;
-	top: 401px;
-	left: 352px;
-	font-size: 10px;
+    width: 394px;
+    position: absolute;
+    top: 401px;
+    left: 352px;
+    font-size: 10px;
 }
 .below_pic{
-	margin-top: 26px;
-	margin-left: 16px;
-	margin-bottom: 53px;
+    margin-top: 26px;
+    margin-left: 16px;
+    margin-bottom: 53px;
 }
 .square{
-	width: 114px;
-	height: 22px;
-	background-color: #2c2c2c;
+    width: 114px;
+    height: 22px;
+    background-color: #2c2c2c;
 }
 .hr_2{
-	width: 353px;
-	margin-left: 0px;
-	margin-bottom: 14px;
-	border: 1px dotted;
-	border-style: none none dotted;
+    width: 353px;
+    margin-left: 0px;
+    margin-bottom: 14px;
+    border: 1px dotted;
+    border-style: none none dotted;
 }
 a:link{
-	text-decoration: none;
-	color: white;
+    text-decoration: none;
+    color: white;
 }
 a:visited{
-	color: white;
+    color: white;
 }
 a:hover{
-	color: yellow;
-	text-decoration: underline;
+    color: yellow;
+    text-decoration: underline;
 }
 #hr_3{
-	width: 660px;
-	margin-left: 58px;
-	margin-bottom: 14px;
-	border: 1px dotted;
-	border-style: none none dotted;
+    width: 660px;
+    margin-left: 58px;
+    margin-bottom: 14px;
+    border: 1px dotted;
+    border-style: none none dotted;
 }
 #creative_design{
-	margin-left: 73px;
+    margin-left: 73px;
 }
 #privacy_policy{
-	text-decoration: underline;
+    text-decoration: underline;
 }
-

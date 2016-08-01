@@ -7,7 +7,7 @@
     //connect database
     $conn = mysqli_connect('sql208.freevnn.com', 'freev_18514815', 'quy2601', 'freev_18514815_formAjax') or die ('{error:"bad_request"}');
 
-    //bien mang luu data
+    //variable data saved is sent to
     $error = array(
         'error' => 'success',
         'password' => $password,
@@ -63,9 +63,9 @@
             echo 'Cannot select email';
         }
     }
-     
+    
+    // insert into database if no error
     if ($error['username'] == '2' && $error['email'] == '4' && $error['password'] && $error['birthday']) {
-        // insert into database if no error
         $query = mysqli_query($conn, "INSERT INTO `formajax`(`USERNAME`, `PASSWORD`, `EMAIL`, `BIRTHDAY`) VALUES ('$username', '$password', '$email', '$birthday')");
     }
     mysql_close($conn);

@@ -1,10 +1,8 @@
 ﻿/* Slider.js */
 
-//first image
 var slideCurrent = 0;
+//reference variable
 var n;
-//variable loop
-var i;
 //taking the elements of class "image"
 var image = document.getElementsByClassName("image");
 //taking the elements of class "iconImage"

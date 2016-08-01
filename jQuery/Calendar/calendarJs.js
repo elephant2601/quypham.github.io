@@ -49,7 +49,7 @@ function optionMonthYear() {
 function buildMonth() {
     content += "<td class = 'click' colspan = '2' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px;'><select id = 'selectMonth' onchange='changeMonth()'>";
     for (i = 0; i < 12; i++) {
-        content += "<option value ='"; 
+        content += "<option value ='";
         content += i;
         content += "'>";
         content += month[i];

@@ -3,16 +3,16 @@ canvas {
     background-color: #f1f1f1;
 }
 #image {
-	background-image: url("img/footer.jpg");
-	background-size: 800px 70px;
-	width: 800px;
-	height: 70px;
-	margin: 0px 0px 0px 1px;
+    background-image: url("img/footer.jpg");
+    background-size: 800px 70px;
+    width: 800px;
+    height: 70px;
+    margin: 0px 0px 0px 1px;
 }
 #pause, #reload, #rocket {
-	width: 70px;
-	height: 70px;
+    width: 70px;
+    height: 70px;
 }
 #pause {
-	margin-left: 300px;
+    margin-left: 300px;
 }
