@@ -2,7 +2,8 @@ var alertString, idAlert;
 
 //check the characters of username
 function  checkUsername() {
-    var usernameLen = document.getElementById("username").value.length;
+    var usernameLen = $("#username").val().length;
+
     if (usernameLen == 0) {
         alertString = "Empty username";
     }
@@ -12,7 +13,6 @@ function  checkUsername() {
         }
         else {
             alertString = "Enough letter";
-            //check();
         }   
     }
     idAlert = "alertUserName";
@@ -21,7 +21,7 @@ function  checkUsername() {
 
 //check the characters of password
 function checkPassword() {
-    var passwordLen = document.getElementById("password").value.length;
+    var passwordLen = $('#password').val().length;
 
     if (passwordLen == 0) {
         alertString = "Empty password";
@@ -43,7 +43,7 @@ function checkEmail() {
     var email, emailArr, emailLen;
     var counter = 0;
 
-    email = document.getElementById("email").value;
+    email = $('#email').val();
     emailLen = email.length;
     emailArr = email.split("");
 
@@ -79,7 +79,7 @@ function checkBirthday2() {
 }
 
 function checkBirthday() {
-    var checkBir = document.getElementById("showCalendar").value;
+    var checkBir = $('#showCalendar').val();
     var checkBirArr = checkBir.split("");
 
     for (i = 0; i < checkBirArr.length; i++) {
@@ -106,7 +106,6 @@ function submitAll() {
             password : $('#password').val(),
             email : $('#email').val(),
             birthday : $('#showCalendar').val()
-            
         },
         success : function(result) {
             result = result.split("");
