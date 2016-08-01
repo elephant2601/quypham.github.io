@@ -1,36 +1,80 @@
-﻿#header {
-	background-color: #2D2F35;
-	border-bottom: 1px solid #474A51;
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
 }
-#main {
-	color: #CCCCCC;
+#header {
+    background-color: #2D2F35;
+    border-bottom: 1px solid #474A51;
+}
+p {
+    color: #CCCCCC;
 }
 h2 {
-	margin: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    color: yellow;
 }
 #content1 {
-	background-image: url("bg_home_intro.gif");
-	background-repeat: repeat-x;
-	height: 327px;
+    background-image: url("bg_home_intro.gif");
+    background-repeat: repeat-x;
+    height: 300px;
+    border-bottom: 1px solid #474A51;
 }
 #ourProduct {
-	width: 405px;
-	float: left;
-	margin: 32px 0px 0px 0px;
+    width: 508px;
+    float: left;
+    margin: 0px 0px -8px 120px;
 }
 #homeIntroImage {
-	float: right;
-
+    float: right;
+    margin-right: 145px;
 }
 #group4Image {
-
+    background-color: #2D2F35;
+    text-align: center;
+    height: 150px;
+    border-bottom: 1px solid #474A51;
 }
-.content2 {
-
+.image {
+    display: inline-block;
+    position: relative;
+    margin: 31px 10px 0px 0px;
+}
+.number {
+    position: absolute;
+    top: 2px;
+    left: 186px;
+}
+#content2 {
+    background-color: #2D2F35;
+    overflow: auto;
+    position: relative;
+    border-bottom: 1px solid #474A51;
 }
 #content2Left {
-
+    width: 510px;
+    float: left;
+    text-align: justify;
+    background-image: url("home_services_bg_design.gif");
+    background-repeat: no-repeat;
+    background-position: 351px 300px;
+    margin: 13px 0px 0px 120px;
 }
 #content2Right {
-
+    width: 510px;
+    float: right;
+    text-align: justify;
+    background-image: url("home_services_bg_marketing.gif");
+    background-repeat: no-repeat;
+    background-position: 8px 12px;
+    margin: 13px 71px 0px 0px;
+}
+#footer {
+    text-align: center;
+    background-image: url("bg_footer.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #24262A;
+    height: 125px;
+}
+#footer p {
+    margin: 0px 0px 0px 0px;
 }
