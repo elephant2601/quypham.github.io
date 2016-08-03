@@ -9,6 +9,43 @@
     background-color: #2471A3;
     color: #ffe8dc;
 }
+#showCalendar {
+    height: 32px;
+    position: relative;
+}
+img {
+    position: absolute;
+    top: 89px;
+    left: 222px;
+}
+#calendar {
+    border: 1px solid black;
+    text-align: center;
+    background-color: #2D2D2D;
+}
+#prevYear, #prevMonth, #nextMonth, #nextYear, .click {
+    background-color: #a9cce3;
+    color: #2e86c1;
+    border: 1px solid black;
+    width: 61px;
+    height: 33px;
+}
+#prevYear, #prevMonth, #nextMonth, #nextYear {
+    cursor: pointer;
+}
+#alertUserName, #alertPassword, #alertEmail {
+    position: absolute;
+    left: 266px;
+}
+#alertUserName {
+    top: 0px;
+}
+#alertPassword {
+    top: 25px;
+}
+#alertEmail {
+    top: 50px;
+}
 #submit; #refresh {
     
 }

@@ -22,8 +22,8 @@ function initCalendar() {
     // taking the number of days this month
     numDayNowMonth = new Date(yearInput, monthInput + 1, 0).getDate();
     content = "<div id = 'main'>";
-    content +="<input id = 'showCalendar' style = 'height: 32px; position: relative;'><img  onclick = 'openCalendar()' src = 'calendar.png' alt = '' style = 'position: absolute; top: 10px; left: 146px;'>";
-    content += "<table id = 'calendar' style = 'border: 1px solid black; text-align: center; background-color: #2D2D2D'>";
+    content +="<input id = 'showCalendar'><img  onclick = 'openCalendar()' src = 'calendar.png' alt = ''>";
+    content += "<table id = 'calendar'>";
     optionMonthYear();
     setCalendar();
     content += "</table>";
@@ -36,18 +36,18 @@ function initCalendar() {
 //create optional month and year
 function optionMonthYear() {
     content += "<tr>";
-    content += "<td class = 'click' id = 'prevYear' onclick = 'prevYear()' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px; cursor: pointer;'>&#8647</td>";
-    content += "<td class = 'click' id = 'prevMonth' onclick = 'prevMonth()' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px; cursor: pointer;'>&larr;</td>";
+    content += "<td class = 'click' id = 'prevYear' onclick = 'prevYear()'>&#8647</td>";
+    content += "<td class = 'click' id = 'prevMonth' onclick = 'prevMonth()'>&larr;</td>";
     buildMonth();
     buildYear();
-    content += "<td class = 'click' id = 'nextMonth' onclick = 'nextMonth()' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px; cursor: pointer;'>&rarr;</td>";
-    content += "<td class = 'click' id = 'nextYear' onclick = 'nextYear()' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px; cursor: pointer;'>&#8649;</td>";
+    content += "<td class = 'click' id = 'nextMonth' onclick = 'nextMonth()'>&rarr;</td>";
+    content += "<td class = 'click' id = 'nextYear' onclick = 'nextYear()'>&#8649;</td>";
     content += "</tr>";
 }
 
 //create optional month
 function buildMonth() {
-    content += "<td class = 'click' colspan = '2' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px;'><select id = 'selectMonth' onchange='changeMonth()'>";
+    content += "<td class = 'click' colspan = '2'><select id = 'selectMonth' onchange='changeMonth()'>";
     for (i = 0; i < 12; i++) {
         content += "<option value ='";
         content += i;
@@ -61,7 +61,7 @@ function buildMonth() {
 
 //creat optional year
 function buildYear() {
-    content += "<td class = 'click' style = 'background-color: #a9cce3; color: #2e86c1; border: 1px solid black; width: 61px; height: 33px;'><select id = 'selectYear' onchange='changeYear()'>";
+    content += "<td class = 'click'><select id = 'selectYear' onchange='changeYear()'>";
     for (i = 1970; i <= 2100; i++) {
         content += "<option value ='";
         content += i;
@@ -83,7 +83,8 @@ function setCalendar() {
     //drawing table calendar (day)
     content += "<tr>";
     for (i = 0; i < 7; i++) {
-        content += "<td style = 'border: 1px solid black; width: 61px; height: 33px; background-color: #BEBEBE; color: red; font-weight: bold; font-size: 18pt;'>";
+        content += "<td style = 'border: 1px solid black; width: 61px; height: 33px;";
+        content += "background-color: #BEBEBE; color: red; font-weight: bold; font-size: 18pt;'>";
         content += date[i];
         content += "</td>";
     }
@@ -103,15 +104,18 @@ function setCalendar() {
                 //drawing the number of days this month
                 else {
                     //hightlight today
-                    if ((dayArr[varloop] == dayInput) && (monthInput == today.getMonth()) && (yearInput == today.getFullYear())) {
-                        content += "<td style = 'border: 1px solid black; width: 61px; height: 33px; color: red; font-weight: bold; background-color: white; cursor: pointer;' onclick='selectDay(";
+                    if ((dayArr[varloop] == dayInput) && (monthInput == today.getMonth()) && 
+                        (yearInput == today.getFullYear())) {
+                        content += "<td style = 'border: 1px solid black; width: 61px; height: 33px; color: red;";
+                        content += "font-weight: bold; background-color: white; cursor: pointer;' onclick='selectDay(";
                         content += varloop;
                         content += ")'>";
                         content += dayArr[varloop];
                         content += "</td>";
                     }
                     else {
-                    content += "<td style = 'border: 1px solid black; width: 61px; height: 33px; background-color: white; cursor: pointer;' onclick='selectDay(";
+                    content += "<td style = 'border: 1px solid black; width: 61px; height: 33px;";
+                    content += "background-color: white; cursor: pointer;' onclick='selectDay(";
                     content += varloop;
                     content += ")'>";
                     content += dayArr[varloop];

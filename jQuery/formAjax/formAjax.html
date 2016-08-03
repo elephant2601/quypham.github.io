@@ -11,18 +11,15 @@
             <table>
                 <tr>
                     <td class="headLine">Username:</td>
-                    <td><input type="text" name="username" id="username" onblur="checkUsername()"/></td>
-                    <td id="alertUserName"></td>
+                    <td><input type="text" name="username" id="username" onblur="checkUsername()"/><p id="alertUserName"></p></td>
                 </tr>
                 <tr>
                     <td class="headLine">Passwork:</td>
-                    <td><input type="password" name="password"  id="password" onblur="checkPassword()"/></td>
-                    <td id="alertPassword"></td>
+                    <td><input type="password" name="password"  id="password" onblur="checkPassword()"/><p id="alertPassword"></p></td>
                 </tr>
                 <tr>
                     <td class="headLine">Email:</td>
-                    <td><input type="text" name="email"  id="email" onblur="checkEmail()"/></td>
-                    <td id="alertEmail"></td>
+                    <td><input type="text" name="email"  id="email" onblur="checkEmail()"/><p id="alertEmail"></p></td>
                 </tr>
                 <tr>
                     <td class="headLine">Birthday:</td>
@@ -31,7 +28,7 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td><button type="button" class="button" id="submit" onclick="submitAll()">SUBMIT</button><button type="reset" class="button" id="refresh" onclick="refreshAll()">REFRESH</button></td>
+                    <td><button type="button" class="button" id="submit" onclick="submitAll()">SUBMIT</button><button type="button" class="button" id="refresh" onclick="refreshAll()">REFRESH</button></td>
                 </tr>
             </table>
         </form>

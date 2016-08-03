@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$(function() {
+    abc();
+});
+var c = 1000;
+function abc() {
+    $('body').css('background-image', 'url("img/bg.jpg")');
+    //console.log(c);
+    var a = Math.floor(Math.random()*1000);
+    var b = Math.floor(Math.random()*604);
+    $("#monster").animate({left: a + 'px', top: b + 'px'}, c, function() { abc();});
+}
+
+</script>
+</head> 
+<body>
+    <div id="monster">
+<img src="img/monster1.png" alt="" style="width: 70px; height: 70px"/>
+</div>
+
+</body>
+</html>
