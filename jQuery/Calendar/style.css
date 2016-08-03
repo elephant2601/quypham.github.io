@@ -5,3 +5,27 @@ table {
     display: none;
     width: 471px;
 }
+#showCalendar {
+    height: 32px;
+    position: relative;
+}
+img {
+    position: absolute;
+    top: 10px;
+    left: 146px;
+}
+#calendar {
+    border: 1px solid black;
+    text-align: center;
+    background-color: #2D2D2D;
+}
+#prevYear, #prevMonth, #nextMonth, #nextYear, .click {
+    background-color: #a9cce3;
+    color: #2e86c1;
+    border: 1px solid black;
+    width: 61px;
+    height: 33px;
+}
+#prevYear, #prevMonth, #nextMonth, #nextYear {
+    cursor: pointer;
+}

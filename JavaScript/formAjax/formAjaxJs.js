@@ -1,4 +1,4 @@
-﻿var submit = 0;
+﻿var submitEmail, submitPass, submitUser, submitBir;
 var alertString, idAlert;
 
 //check the characters of username
@@ -6,10 +6,12 @@ function  checkUsername() {
     var usernameLen = document.getElementById("username").value.length;
     if (usernameLen == 0) {
         alertString = "Empty username";
+        submitUser = 0;
     }
     else {
         if (usernameLen < 8) {
             alertString = "Username length min 8 letter";
+            submitUser = 0;
         }
         else {
             check();
@@ -25,14 +27,16 @@ function checkPassword() {
 
     if (passwordLen == 0) {
         alertString = "Empty password";
+        submitPass = 0;
     }
     else {
         if (passwordLen < 8) {
             alertString = "Password length min 8 letter";
+            submitPass = 0;
         }
         else {
             alertString = "OK";
-            submit++;
+            submitPass = 1;
         }
     }
     idAlert = "alertPassword";
@@ -41,29 +45,24 @@ function checkPassword() {
 
 //check the characters of email
 function checkEmail() {
-    var email, emailArr, emailLen;
-    var counter = 0;
+    var email, emailLen;
+    var emailReg = /[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}/;
 
     email = document.getElementById("email").value;
     emailLen = email.length;
-    emailArr = email.split("");
-
-    for (i = 0; i < emailArr.length; i++) {
-        if (emailArr[i] == "@" || emailArr[i] == ".") {
-            counter++;
-        }
-    }
 
     if(emailLen == 0) {
         alertString = "Empty email";
+        submitEmail = 0;
     }
     else {
-        if (counter == 2) {
+        if (email.search(emailReg) >= 0) {
             alertString = "OK";
-            submit++;
+            submitEmail = 1;
         }
         else {
             alertString = "Email wrong format";
+            submitEmail = 0;
         }
     }
     idAlert = "alertEmail";
@@ -87,11 +86,12 @@ function checkBirthday() {
     for (i = 0; i < checkBirArr.length; i++) {
         if (checkBirArr[i] == "/") {
             alertString = "OK";
-            submit++;
+            submitBir = 1;
             break;
         }
         else {
             alertString = "Birthday wrong format";
+            submitBir = 0;
         }
     }
     idAlert = "alertBirthday";
@@ -100,9 +100,9 @@ function checkBirthday() {
 
 //submit form
 function submitAll() {
-    if (submit == 4) {
+    if (submitUser == 1 && submitPass == 1 && submitEmail == 1 && submitBir == 1) {
         alert("Submit successfully!");
-        submit = 0;
+        refreshAll();
     }
     else {
         alert("Please fill again!");
@@ -116,7 +116,8 @@ function refreshAll() {
     document.getElementById("alertEmail").innerHTML = null;
     document.getElementById("alertBirthday").innerHTML = null;
     document.getElementById("myForm").reset();
-    submit = 0;
+    document.getElementById("selectMonth").value = monthInput;
+    document.getElementById("selectYear").value = yearInput;
 }
 
 //check valid username
@@ -141,7 +142,10 @@ function check() {
             idAlert = "alertUserName";
             alertAll();
             if (result == "OK") {
-                submit++;
+                submitUser = 1;
+            }
+            else {
+                submitUser = 0;
             }
         }
     }

@@ -1,11 +1,14 @@
-var monster1, monster2, bigMonster, background, clicked, boom, ranWidth, ranHeight, heart1, heart2, heart3, heart4, gameOver, pauseScr, req;
+var monster1, monster2, bigMonster, background, clicked, boom, ranWidth, ranHeight, heart1, heart2, heart3, heart4;
+var gameOver, pauseScr, req, pauseClear;
 var score = 0;
 var speedAll = 0.5;
 var heart = [heart1, heart2, heart3, heart4];
 var pauseBtn = false;
 var playAndStop = true;
-var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-var cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimationFrame || window.webkitCancelAnimationFrame || window.msCancelAnimationFrame;
+var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+                            window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+var cancelAnimationFrame =  window.cancelAnimationFrame || window.mozCancelAnimationFrame ||
+                            window.webkitCancelAnimationFrame || window.msCancelAnimationFrame;
 
 function startGame() {
     createMonster.one();
@@ -14,6 +17,7 @@ function startGame() {
     createHeart();
     createGameOver();
     createScore = new component("30px", "Arial", "red", 600, 40, "text");
+    pauseScr = new component(256, 256, "img/Pause-icon.png", 272, 97, "image");
     background = new component(800, 450, "img/bg.jpg", 0, 0, "image");
     gameArea.start();
 }
@@ -201,6 +205,7 @@ function updateGameArea(time) {
         monster1.update();
         monster2.update();
         bigMonster.update();
+        
         //appear GAME OVER
         if (heart.length == 0) {
             gameOver.text = "GAME OVER";
@@ -210,17 +215,23 @@ function updateGameArea(time) {
         }
     }
     gameArea.req = requestAnimationFrame(updateGameArea);
+    if (pauseBtn && pauseClear) {
+        pauseScr.update();
+        pauseClear = 0;
+    }
 }
 
 //create monster1, monster2, bigMonster
 var createMonster = {
     one : function() {
         ranWidHei();
-        monster1 = new component(70, 70, "img/monster" + (Math.floor(Math.random()*4)+1) + ".png", ranWidth, ranHeight, "image");
+        monster1 = new component(70, 70, "img/monster" + (Math.floor(Math.random()*4)+1) + ".png",
+                                ranWidth, ranHeight, "image");
     },
     two : function() {
         ranWidHei();
-        monster2 = new component(70, 70, "img/monster" + (Math.floor(Math.random()*4)+1) + ".png", ranWidth, ranHeight, "image");
+        monster2 = new component(70, 70, "img/monster" + (Math.floor(Math.random()*4)+1) + ".png",
+                                ranWidth, ranHeight, "image");
     },
     three : function() {
         bigMonster = new component(150, 156, "img/dragon.png", 325, 147, "image");
@@ -253,9 +264,8 @@ function ranWidHei() {
 function pauseGame() {
     pauseBtn = !pauseBtn;
     if (pauseBtn) {
-        pauseScr = new component(256, 256, "img/Pause-icon.png", 272, 97, "image");
-        pauseScr.update();
         playAndStop = false;
+        pauseClear = 1;
     }
     else {
         score += 5;
@@ -268,6 +278,8 @@ function reloadGame() {
     score = 0;
     speedAll = 0.5;
     heart = [heart1, heart2, heart3, heart4];
+    pauseBtn = false;
+    playAndStop = true;
     score += 5;
     gameArea.stop();
     startGame();
@@ -275,8 +287,12 @@ function reloadGame() {
 
 //boom button
 function rocketGame() {
-    speedAll = 0.5;
-    score += 5;
-    gameArea.stop();
-    startGame();
+    if (heart.length > 0) {
+        speedAll = 0.5;
+        pauseBtn = false;
+        playAndStop = true;
+        score += 5;
+        gameArea.stop();
+        startGame();
+    }
 }
