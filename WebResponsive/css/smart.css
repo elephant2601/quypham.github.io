@@ -137,5 +137,7 @@ h4{
 .inline_block {
 	display: block;
 }
-
+#content3_acty {
+	margin-right: 0% !important;
+}
 /*End Quy*/
