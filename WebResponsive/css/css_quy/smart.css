@@ -1,0 +1,27 @@
+@media screen and (max-width: 644px) {
+
+/*Quy*/
+.float_left, .float_right {
+    float: none !important;
+}
+.img1_2_intro, #img_spec_intro {
+    text-align: center;
+}
+.content_facial, .content_slim, .content_depilation {
+    margin-left: 9%;
+}
+.content_slim {
+    margin-left: 7%;
+}
+.next_bihda {
+    background: url(../images/bihda/down.png) no-repeat;
+    margin-bottom: 0%;
+    margin-left: 28%;
+}
+.inline_block {
+    display: block;
+}
+#content3_acty {
+    margin-right: 0% !important;
+}
+/*End Quy*/
