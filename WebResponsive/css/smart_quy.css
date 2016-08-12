@@ -15,7 +15,7 @@
 .inner h1 {
     text-align: center;
 }
-.slide {
+#banner {
     display: none;
 }
 #content dl dd,
@@ -25,6 +25,29 @@
 }
 .img345_index {
     margin: auto;
+}
+#content dl dd {
+    padding-left: 20px;
+}
+#content dl dd,
+#content dl dt {
+    text-align: left;
+}
+#content1_index {
+    width: 100%;
+}
+#bg_border,
+#bg_border_2 {
+    margin: 13px auto 23px auto;
+}
+#content_footer {
+    width: 100%;
+}
+#content2_footer {
+    margin: 30px auto 30px auto;
+}
+#content3_footer {
+    margin: auto auto 30px auto;
 }
 .img1_2_intro, #img_spec_intro {
     text-align: center;
