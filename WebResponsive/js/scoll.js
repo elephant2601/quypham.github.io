@@ -1,5 +1,5 @@
 $(function() {
-	    var topBtn = $('#page-top');   
+	    var topBtn = $('.top_page');   
 	    topBtn.hide();
 	    //ƒXƒNƒ[ƒ‹‚ª100‚É’B‚µ‚½‚çƒ{ƒ^ƒ“•\Ž¦
 	    $(window).scroll(function () {

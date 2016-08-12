@@ -1,0 +1,72 @@
+@media screen and (max-width: 644px) {
+
+/*Quy*/
+.float {
+    float: none;
+    text-align: center;
+}
+.float_left, .float_right {
+    float: none !important;
+}
+.inner {
+    width: 100%;
+    text-align: center;
+}
+.inner h1 {
+    text-align: center;
+}
+#banner {
+    display: none;
+}
+#content dl dd,
+#content,
+#aside {
+    width: 100%;
+}
+.img345_index {
+    margin: auto;
+}
+#content dl dd {
+    padding-left: 20px;
+}
+#content dl dd,
+#content dl dt {
+    text-align: left;
+}
+#content1_index {
+    width: 100%;
+}
+#bg_border,
+#bg_border_2 {
+    margin: 13px auto 23px auto;
+}
+#content_footer {
+    width: 100%;
+}
+#content2_footer {
+    margin: 30px auto 30px auto;
+}
+#content3_footer {
+    margin: auto auto 30px auto;
+}
+.img1_2_intro, #img_spec_intro {
+    text-align: center;
+}
+.content_facial, .content_slim, .content_depilation {
+    margin-left: 9%;
+}
+.content_slim {
+    margin-left: 7%;
+}
+.next_bihda {
+    background: url(../images/bihda/down.png) no-repeat;
+    margin-bottom: 0%;
+    margin-left: 28%;
+}
+.inline_block {
+    display: block;
+}
+#content3_acty {
+    margin-right: 0% !important;
+}
+/*End Quy*/

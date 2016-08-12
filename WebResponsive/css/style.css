@@ -713,7 +713,7 @@ h4{
     background-color: #ffd54f;
     width: 88%;
     min-height: 29px;
-    padding: 11px 0% 0% 40px;
+    padding: 11px 0px 0px 40px;
     margin: 0% 0% 2% 3%;
 }
 .a_qa {
@@ -721,7 +721,7 @@ h4{
 	background-repeat: no-repeat;
 	margin: 0% 0% 2% 3%;
 	min-height: 40px;
-	padding: 8px 0% 0% 40px;
+	padding: 8px 0px 0px 40px;
 }
 #map_access {
 	max-width: 517px;
