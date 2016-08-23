@@ -1,0 +1,6 @@
+Leader 	 Pham Dinh Truong 	 13/02/1993
+Deputy Leader 	 Dang Thi Hoa 	 19/11/1992
+Member1 	 Nguyen Thi Van 	 02/10/1992
+Member2 	 Trinh Thi Tuyet Diem 	 12/05/1993
+Member3 	 Nguyen Thi Hong Van 	 09/08/1993
+Member4 	 Vo Thi Tuyet 	 18/08/1993

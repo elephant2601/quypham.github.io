@@ -1,19 +1,55 @@
-def new_file(file_name)
-	file = File.new(file_name + ".txt", "a+")
-	$file_name = file_name
-	file.close
-end
+class Contacts
+  puts "\tCONTACTS\n
+        To add members: list.add_member('name', telephone_number)\n
+        To search by ID: list.search_id(id)\n
+        To search by name: list.search_name('name')\n
+        To search by telephone number: list.search_number(telephone_number)"
 
-def add_to_file(name, position, birthday)
-	if $file_name
-		file = File.open($file_name + ".txt", "a+")
-		#@name = file.sysread(name.length)
-		#@position = file.sysread(position.length + 1)
-		#@birthday = file.sysread(birthday.length + 1)
-		#if @name ==  && @position
-		file.syswrite("#{name}\t#{position}\t#{birthday}\n")
-	else
-		puts "Unable to open file!\nPlease create file first!"
-	end
-end
+  @@id_num = 0
+  @@id = []
+  @@name = []
+  @@telephone_number = []
+  @@id_num
+  def add_member(name, telephone_number)
+    @@id_num += 1
+    file = File.open("contacts.txt", "a+")
+    file.syswrite("#{@@id_num}\t#{name}\t#{telephone_number}\n")
+    @@id.push(@@id_num)
+    @@name.push(name)
+    @@telephone_number.push(telephone_number)
+  end
 
+  def search_id(id)
+    @@id.each_index do |element|
+      if element == (id - 1)
+        puts element
+        #show_info
+      else
+        puts "id doesn't exist"
+      end
+    end
+  end
+
+  def search_name(name)
+    @@name.each_index do |element|
+      if element == name
+        puts element
+        #show_info
+      else
+        puts "name doesn't exist"
+      end
+    end
+  end
+
+  def search_number(telephone_number)
+    @@telephone_number.each_index do |element|
+      if element == telephone_number
+        puts element
+        #show_info
+      else
+        puts "telephone_number doesn't exist"
+      end
+    end
+  end
+
+end
