@@ -1,8 +1,25 @@
+#!usr/bin/ruby
+
+=begin
+===============================================================================
+Author: Pham Van Quy
+Date: 25/08/2016
+
+Describe:
+  Creating contacts, which can add name and phone number.
+  Search member by name or phone number.
+
+===============================================================================
+=end
+
 class Contacts
   @@contacts_num = {}
   @@contacts_time = {}
 
   # add new member
+  # input: member's name and phone number
+  # output: If the name and phone number are correct
+  # and not exist, add to contacts.
   def add_member(name, telephone_number)
     name.downcase!
     @name = name
@@ -32,6 +49,8 @@ class Contacts
   end
 
   # search existing members by name
+  # input: name
+  # output: member's name and phone number
   def search_by_name(name)
     name.downcase!
     @name = name
@@ -47,6 +66,8 @@ class Contacts
   end
 
   # find existing members by telephone number
+  # input: phone number
+  # output: member's name and phone number
   def search_by_number(telephone_number)
     @number = telephone_number
     check_number
